@@ -1,0 +1,42 @@
+.grad {
+    height: 1200px;
+    width: 2000px;
+  background-color: wheat;
+  background-size: 100%;
+  background: linear-gradient(
+    135deg,
+    hsl(170deg, 80%, 70%),
+    hsl(190deg, 80%, 70%),
+    hsl(250deg, 80%, 70%),
+    hsl(320deg, 80%, 70%)
+  );
+  background-size: 200% 200%;
+  animation: mymove 5s linear infinite alternate;
+  
+}
+@keyframes mymove {
+  0% {
+    background-position: 0 0;
+  }
+  14% {
+    background-position: 10% 10%;
+  }
+  28% {
+    background-position: 25% 25%;
+  }
+  42% {
+    background-position: 40% 40%;
+  }
+  56% {
+    background-position: 55% 55%;
+  }
+  70% {
+    background-position: 70% 70%;
+  }
+  84% {
+    background-position: 85% 85%;
+  }
+  100% {
+    background-position: 100% 100%;
+  }
+}
