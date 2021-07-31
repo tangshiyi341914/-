@@ -1,6 +1,7 @@
 package com.project.model;
 
 import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.AllArgsConstructor;
@@ -24,13 +25,14 @@ public class Menu implements Serializable {
     private String component;
 
     private String name;
-
+    @TableField("iconCls")
     private String iconCls;
-
+    @TableField("parentId")
     private Integer parentId;
-
     private Boolean enabled;
+    @TableField(exist = false)
     private List<Menu> children;
+    @TableField(exist = false)
     private List<Role> roles;
 
 }

@@ -10,3 +10,6 @@ server:
   port: 8081
   compression:
     enabled: true
+mybatis-plus:
+  configuration:
+    map-underscore-to-camel-case: true

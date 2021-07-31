@@ -2,6 +2,7 @@ package com.project.controller;
 
 import com.project.config.VerificationCode;
 import com.project.model.RespBean;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -17,6 +18,7 @@ import java.io.IOException;
  * @classname:LoginController
  * @date 2021/7/23 - 18:59
  */
+@CrossOrigin
 @RestController
 public class LoginController {
     @GetMapping("/login")
