@@ -2,8 +2,11 @@ package com.project.services;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
+import com.project.mapper.RoleMapper;
 import com.project.mapper.UserMapper;
+import com.project.mapper.UserRoleMapper;
 import com.project.model.User;
+import com.project.model.UserRole;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -24,7 +27,10 @@ import org.springframework.transaction.annotation.Transactional;
 public class UserService implements UserDetailsService {
     @Autowired
     UserMapper userMapper;
-
+    @Autowired
+    RoleMapper roleMapper;
+    @Autowired
+    UserRoleMapper userRoleMapper;
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         QueryWrapper<User> queryWrapper = new QueryWrapper();
@@ -33,6 +39,9 @@ public class UserService implements UserDetailsService {
         if (user == null) {
             throw new UsernameNotFoundException("用户名不存在!");
         }
+        QueryWrapper<UserRole> queryWrapper1 =new QueryWrapper<>();
+        queryWrapper1.eq("uid",user.getId());
+        user.setRole(roleMapper.selectById(userRoleMapper.selectOne(queryWrapper1).getRid()));
         return user;
     }
 
@@ -54,10 +63,13 @@ public class UserService implements UserDetailsService {
     public Integer deleteUserById(Integer id) {
         return userMapper.deleteById(id);
     }
+    public Integer updateUser(User user) {
 
+        return userMapper.updateById(user);
+    }
 
-    public boolean updateUserPasswd(User user ,String oldpass,String pass) {
-
+    public boolean updateUserPassword( Integer userid,String oldpass,String pass) {
+        User user = userMapper.selectById(userid);
         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
         if (encoder.matches(oldpass, user.getPassword())) {
             UpdateWrapper<User> updateWrapper = new UpdateWrapper();

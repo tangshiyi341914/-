@@ -34,7 +34,8 @@ public class User implements UserDetails {
   private Integer   rows;   //每页显示的件数
   @TableField(exist = false)
   private Integer[] ids;   //用于批量删除
-
+  @TableField(exist = false)
+  private Role role;
   @Override
   public Collection<? extends GrantedAuthority> getAuthorities() {
     return null;

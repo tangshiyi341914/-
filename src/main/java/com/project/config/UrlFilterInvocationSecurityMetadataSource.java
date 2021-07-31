@@ -25,7 +25,6 @@ public class UrlFilterInvocationSecurityMetadataSource implements FilterInvocati
 
     @Autowired
     private MenuService menuService;
-    //    在做uri匹配规则
     AntPathMatcher antPathMatcher = new AntPathMatcher();
     @Override
     public Collection<ConfigAttribute> getAttributes(Object object) throws IllegalArgumentException {
