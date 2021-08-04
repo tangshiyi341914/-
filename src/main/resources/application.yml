@@ -13,7 +13,7 @@ spring:
     host: 47.101.43.9
     port: 5672
 server:
-  port: 8081
+  port: 8000
   compression:
     enabled: true
 mybatis-plus:
