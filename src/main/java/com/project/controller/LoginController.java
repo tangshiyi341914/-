@@ -1,6 +1,6 @@
 package com.project.controller;
 
-import com.project.config.VerificationCode;
+import com.project.config.login.VerificationCode;
 import com.project.model.RespBean;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
