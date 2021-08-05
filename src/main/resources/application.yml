@@ -1,0 +1,31 @@
+spring:
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    username: root
+    password: zfx666
+    url: jdbc:mysql://localhost:3306/project?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
+  cache:
+    cache-names: menus_cache
+  rabbitmq:
+    username: admin
+    password: admin
+    virtual-host: /
+    host: 47.101.43.9
+    port: 5672
+server:
+  port: 8081
+  compression:
+    enabled: true
+mybatis-plus:
+  configuration:
+    map-underscore-to-camel-case: true
+#用/swagger-ui.html访问
+swagger:
+  title: project
+  description: 基因重组工程实践
+  version: 1.9.0.RELEASE
+  license: Apache License, Version 2.0
+  license-url: https://www.apache.org/licenses/LICENSE-2.0.html
+  terms-of-service-url: https://github.com/dyc87112/spring-boot-starter-swagger
+  base-package: com.project
+  base-path: /**
