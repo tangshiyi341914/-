@@ -143,7 +143,10 @@ public class Listing implements Serializable {
     @ApiModelProperty(value = "备注")
     private String comment;
 
-    @ApiModelProperty(value = "状态")
+    @ApiModelProperty(value = "0是未审核\n" +
+            "1是审核不通过\n" +
+            "2是挂牌成功\n" +
+            "3是交易完成")
     private Integer status;
 
 
