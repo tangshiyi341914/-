@@ -1,6 +1,7 @@
 package com.project.services.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.project.model.Listing;
 import com.project.mapper.ListingMapper;
@@ -10,10 +11,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * <p>
- *  服务实现类
+ * 服务实现类
  * </p>
  *
  * @author 基因重组
@@ -23,15 +25,53 @@ import java.util.List;
 public class ListingServiceImpl extends ServiceImpl<ListingMapper, Listing> implements ListingService {
     @Autowired
     private ListingMapper listMapper;
-    public List<Listing> selectList(){
+
+    public List<Listing> selectList() {
         return listMapper.selectList(null);
     }
 
     public List<Listing> selectListPage(int current, int size, int identity) {
-        Page<Listing> page = new Page<>(current,size);
+        Page<Listing> page = new Page<>(current, size);
+        if (identity == 2) {
+            listMapper.selectPage(page, null);
+        } else {
+            QueryWrapper<Listing> queryWrapper = new QueryWrapper();
+            queryWrapper.eq("identity", identity);
+            listMapper.selectPage(page, queryWrapper);
+        }
+        return page.getRecords();
+    }
+
+    public int insert(Listing listing) {
+        return listMapper.insert(listing);
+    }
+
+    public int setStatus(int id, int status) {
+        Listing listing = listMapper.selectById(id);
+        listing.setStatus(status);
+        return listMapper.updateById(listing);
+    }
+
+    public int delete(int id) {
+        return listMapper.deleteById(id);
+    }
+
+    public List<Listing> select(Map<String, Object> map) {
         QueryWrapper<Listing> queryWrapper = new QueryWrapper();
-        queryWrapper.eq("identity",identity);
-        listMapper.selectPage(page,queryWrapper);
+        //一些条件
+        queryWrapper.eq("status", 2);
+        return listMapper.selectList(queryWrapper);
+    }
+
+    public List<Listing> selectListStatus(int current, int size, int status) {
+        Page<Listing> page = new Page<>(current, size);
+        if (status == 4) {
+            listMapper.selectPage(page, null);
+        } else {
+            QueryWrapper<Listing> queryWrapper = new QueryWrapper();
+            queryWrapper.eq("status", status);
+            listMapper.selectPage(page, queryWrapper);
+        }
         return page.getRecords();
     }
 }
