@@ -1,6 +1,6 @@
 package com.project.services;
 
-import com.project.model.List;
+import com.project.model.Listing;
 import com.baomidou.mybatisplus.extension.service.IService;
 
 /**
@@ -11,6 +11,6 @@ import com.baomidou.mybatisplus.extension.service.IService;
  * @author 基因重组
  * @since 2021-08-04
  */
-public interface ListService extends IService<List> {
+public interface ListingService extends IService<Listing> {
 
 }

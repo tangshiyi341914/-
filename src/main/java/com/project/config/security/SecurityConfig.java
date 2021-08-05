@@ -52,6 +52,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     public void configure(WebSecurity web) throws Exception {
+
+        boolean debug=false;
+        //是否开启测试api，如果是true，只需启动后端，即可正常测试api。
+        if(debug){
+            web.ignoring().antMatchers("/**");
+            return;
+        }
+
         web.ignoring().antMatchers("/css/**", "/js/**", "/index.html", "/img/**", "/fonts/**", "/favicon.ico", "/verifyCode","/swagger-ui.html",
                 "/v2/api-docs", // swagger api json
                 "/swagger-resources/configuration/ui", // 用来获取支持的动作
@@ -59,6 +67,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 "/swagger-resources/configuration/security", // 安全选项
                 "/swagger-resources/**",//补充路径，近期在搭建swagger接口文档时，通过浏览器控制台发现该/webjars路径下的文件被拦截，故加上此过滤条件即可。(2020-10-23)
                 "/webjars/**","/sendDirectMessage");
+
+//                ,"/**");//测试api用
     }
 
     @Bean

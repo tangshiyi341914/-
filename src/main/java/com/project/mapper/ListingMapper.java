@@ -1,7 +1,8 @@
 package com.project.mapper;
 
-import com.project.model.List;
+import com.project.model.Listing;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import org.springframework.stereotype.Repository;
 
 /**
  * <p>
@@ -11,6 +12,8 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
  * @author 基因重组
  * @since 2021-08-04
  */
-public interface ListMapper extends BaseMapper<List> {
+@Repository
+public interface ListingMapper extends BaseMapper<Listing> {
+
 
 }
