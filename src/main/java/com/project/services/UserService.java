@@ -16,6 +16,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 /**
  * @author Sweary
  * @packagename:com.project.services
@@ -31,29 +33,44 @@ public class UserService implements UserDetailsService {
     RoleMapper roleMapper;
     @Autowired
     UserRoleMapper userRoleMapper;
+
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         QueryWrapper<User> queryWrapper = new QueryWrapper();
-        queryWrapper.eq("username",username);
+        queryWrapper.eq("username", username);
         User user = userMapper.selectOne(queryWrapper);
         if (user == null) {
             throw new UsernameNotFoundException("用户名不存在!");
         }
-        QueryWrapper<UserRole> queryWrapper1 =new QueryWrapper<>();
-        queryWrapper1.eq("uid",user.getId());
+        QueryWrapper<UserRole> queryWrapper1 = new QueryWrapper<>();
+        queryWrapper1.eq("uid", user.getId());
         user.setRole(roleMapper.selectById(userRoleMapper.selectOne(queryWrapper1).getRid()));
         return user;
     }
 
-//    public List<User> getAllUsers(User user) {
-//        QueryWrapper<User> queryWrapper = new QueryWrapper();
-//        queryWrapper.s( user.getName() != null, "name", user.getName() );
-//        return userMapper.selectList(queryWrapper);
-//    }
-    public boolean updateUserRole(String role, User user) {
-        UpdateWrapper<User> updateWrapper = new UpdateWrapper();
-        updateWrapper.eq("username",user.getUsername());
-        int result=userMapper.update(user,updateWrapper);
+    public List<User> getAllUsers() {
+
+        //构建条件构造器：QueryWrapper
+        QueryWrapper<User> queryWrapper = new QueryWrapper();
+        //通过条件构造器创建动态SQL语句
+        queryWrapper.orderByAsc("id");
+        List<User> list = userMapper.selectList(queryWrapper);
+        for (int i = 0; i < list.size(); i++) {
+            QueryWrapper<UserRole> queryWrapper1 = new QueryWrapper();
+            queryWrapper1.eq("uid",list.get(i).getId());
+           UserRole userRole= userRoleMapper.selectOne(queryWrapper1);
+            System.out.println(userRole);
+           list.get(i).setRole(roleMapper.selectById(userRole.getRid()));
+        }
+        return list;
+    }
+
+    public boolean updateUserRole(Integer uid, Integer rid) {
+        UpdateWrapper<UserRole> updateWrapper = new UpdateWrapper();
+        updateWrapper.eq("uid", uid);
+        UserRole userRole = userRoleMapper.selectById(uid);
+        userRole.setRid(rid);
+        int result = userRoleMapper.update(userRole, updateWrapper);
         if (result == 1) {
             return true;
         }
@@ -63,17 +80,18 @@ public class UserService implements UserDetailsService {
     public Integer deleteUserById(Integer id) {
         return userMapper.deleteById(id);
     }
+
     public Integer updateUser(User user) {
 
         return userMapper.updateById(user);
     }
 
-    public boolean updateUserPassword( Integer userid,String oldpass,String pass) {
+    public boolean updateUserPassword(Integer userid, String oldpass, String pass) {
         User user = userMapper.selectById(userid);
         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
         if (encoder.matches(oldpass, user.getPassword())) {
             UpdateWrapper<User> updateWrapper = new UpdateWrapper();
-            updateWrapper.eq("username",user.getUsername());
+            updateWrapper.eq("username", user.getUsername());
             String encodePass = encoder.encode(pass);
             user.setPassword(encodePass);
             Integer result = userMapper.update(user, updateWrapper);
