@@ -52,7 +52,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     public void configure(WebSecurity web) throws Exception {
-        boolean debug = true;
+        boolean debug = false;
         //是否开启测试api，如果是true，只需启动后端，即可正常测试api。
         if (debug) {
             web.ignoring().antMatchers("/**");
