@@ -23,12 +23,12 @@ public class UserInfoController {
     @Autowired
     UserService userService;
 
-    @GetMapping("/user/info")
+    @GetMapping("/info")
     public User getCurrentUser(Authentication authentication) {
         return ((User) authentication.getPrincipal());
     }
 
-    @PutMapping("/user/info")
+    @PutMapping("/info")
     public RespBean updateUser(@RequestBody User user, Authentication authentication) {
         if (userService.updateUser(user) == 1) {
             SecurityContextHolder.getContext().setAuthentication(new UsernamePasswordAuthenticationToken(user, authentication.getCredentials(), authentication.getAuthorities()));
@@ -37,7 +37,7 @@ public class UserInfoController {
         return RespBean.error("更新失败!");
     }
 
-    @PutMapping("/user/pass")
+    @PutMapping("/pass")
     public RespBean updateUserPassword(@RequestBody Map<String, Object> info) {
         String oldpass = (String) info.get("oldpass");
         String pass = (String) info.get("pass");

@@ -30,6 +30,7 @@ public class ListingController {
     @GetMapping("/all")
     @ApiOperation("返回所有订单信息，不论状态，不论买卖")
     public RespBean getList() {
+        System.out.println("进入/list/all");
 //        listService.
         List<Listing> list = listingService.selectList();
         System.out.println(list);
@@ -39,7 +40,7 @@ public class ListingController {
     @ApiOperation("current:当前页，" +
             "size:一页显示的数据数量(-1表示查询全部)" +
             "identity:0是买家发布的单子，1是卖家发布的单子,2是都查看。" +
-            "使用map传入")
+            "对象传入")
     @PostMapping("/page")
     public RespBean identityPage(@RequestBody Map<String, Object> map) {
         System.out.println("identityPage begin");
@@ -53,7 +54,7 @@ public class ListingController {
     @ApiOperation("current:当前页，" +
             "size:一页显示的数据数量(-1表示查询全部)" +
             "status:0待审核1，1是已驳回，2是审核通过，3是交易完成，4是全部。" +
-            "使用map传入")
+            "对象传入")
     @PostMapping("/status")
     public RespBean statusPage(@RequestBody Map<String, Object> map) {
         System.out.println("statusPage begin");
@@ -66,7 +67,6 @@ public class ListingController {
     @ApiOperation("传入一个需要新增的牌对象")
     @PostMapping("/add")
     public RespBean addListing(@RequestBody Listing listing) {
-        listing.setStatus(0);
         if (listingService.insert(listing) > 0) {
             return RespBean.ok("挂牌信息提交成功，等待管理员审核");
         } else {
