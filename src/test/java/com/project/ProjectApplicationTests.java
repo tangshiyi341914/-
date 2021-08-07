@@ -18,14 +18,14 @@ class ProjectApplicationTests {
     private ListingMapper listingMapper;
     @Autowired
     private ListingServiceImpl listingService;
+
     @Test
     void contextLoads() {
-        List<Listing> list = listingService.selectListPage(1, 10, 1);
-        list.forEach(System.out::println);
-
+        System.out.println(listingService.selectListPage(1, 10, 1));
     }
+
     @Test
-    void selectTest(){
+    void selectTest() {
         Page<Listing> page = new Page<>(3, -1);
         listingMapper.selectPage(page, null);
 //        List<Listing> list = listingMapper.selectList(listingPage);
@@ -33,11 +33,11 @@ class ProjectApplicationTests {
     }
 
     @Test
-    void generateSomeApi(){
-        Map<String,Object> map=new HashMap<>();
-        map.put("identify",1);
-        map.put("current",2);
-        map.put("size",6);
+    void generateSomeApi() {
+        Map<String, Object> map = new HashMap<>();
+        map.put("identify", 1);
+        map.put("current", 2);
+        map.put("size", 6);
         System.out.println(map);
     }
 }

@@ -10,6 +10,7 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -30,7 +31,7 @@ public class ListingServiceImpl extends ServiceImpl<ListingMapper, Listing> impl
         return listMapper.selectList(null);
     }
 
-    public List<Listing> selectListPage(int current, int size, int identity) {
+    public Map<String, Object> selectListPage(int current, int size, int identity) {
         Page<Listing> page = new Page<>(current, size);
         if (identity == 2) {
             listMapper.selectPage(page, null);
@@ -39,7 +40,10 @@ public class ListingServiceImpl extends ServiceImpl<ListingMapper, Listing> impl
             queryWrapper.eq("identity", identity);
             listMapper.selectPage(page, queryWrapper);
         }
-        return page.getRecords();
+        Map<String, Object> map = new HashMap<>();
+        map.put("total", page.getTotal());
+        map.put("records", page.getRecords());
+        return map;
     }
 
     public int insert(Listing listing) {
@@ -62,8 +66,7 @@ public class ListingServiceImpl extends ServiceImpl<ListingMapper, Listing> impl
         queryWrapper.eq("status", 2);
         return listMapper.selectList(queryWrapper);
     }
-
-    public List<Listing> selectListStatus(int current, int size, int status) {
+    public Map<String, Object> selectListStatus(int current, int size, int status) {
         Page<Listing> page = new Page<>(current, size);
         if (status == 4) {
             listMapper.selectPage(page, null);
@@ -72,6 +75,9 @@ public class ListingServiceImpl extends ServiceImpl<ListingMapper, Listing> impl
             queryWrapper.eq("status", status);
             listMapper.selectPage(page, queryWrapper);
         }
-        return page.getRecords();
+        Map<String, Object> map = new HashMap<>();
+        map.put("total", page.getTotal());
+        map.put("records", page.getRecords());
+        return map;
     }
 }
