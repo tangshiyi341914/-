@@ -1,14 +1,15 @@
 package com.project.controller;
 
 
+import com.project.model.RespBean;
+import com.project.model.RespPageBean;
 import com.project.model.User;
+import com.project.services.MenuService;
 import com.project.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
+import java.util.Date;
 
 /**
  * <p>
@@ -20,16 +21,39 @@ import java.util.List;
  */
 @CrossOrigin
 @RestController
-@RequestMapping("/user")
+@RequestMapping("/user/basic")
 public class UserController {
     @Autowired
     UserService userService;
-    @RequestMapping("/basic")
-    public List<User> getAllUsers()
+    @Autowired
+    MenuService menuService;
+    @PostMapping("/")
+    public RespBean addUser(@RequestBody User user) {
+        if (userService.addUser(user) == 1) {
+            return RespBean.ok("添加成功!");
+        }
+        return RespBean.error("添加失败!");
+    }
+
+    @DeleteMapping("/{id}")
+    public RespBean deleteUserByEid(@PathVariable Integer id) {
+        if (userService.deleteUserById(id) == 1) {
+            return RespBean.ok("删除成功!");
+        }
+        return RespBean.error("删除失败!");
+    }
+
+    @PutMapping("/")
+    public RespBean updateUser(@RequestBody User user) {
+        if (userService.updateUser(user) == 1) {
+            return RespBean.ok("更新成功!");
+        }
+        return RespBean.error("更新失败!");
+    }
+    @RequestMapping("/")
+    public RespPageBean getAllUsers(@RequestParam(defaultValue = "1") Integer page, @RequestParam(defaultValue = "10") Integer size, User user, Date[] beginDateScope)
     {
-        List<User> list =userService.getAllUsers();
-        System.out.println(list);
-        return list;
+        return userService.getAllUsers(page, size, user, beginDateScope);
     }
 }
 

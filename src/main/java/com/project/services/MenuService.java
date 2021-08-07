@@ -3,11 +3,9 @@ package com.project.services;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.project.mapper.MenuMapper;
 import com.project.mapper.MenuRoleMapper;
+import com.project.mapper.RoleMapper;
 import com.project.mapper.UserRoleMapper;
-import com.project.model.Menu;
-import com.project.model.MenuRole;
-import com.project.model.User;
-import com.project.model.UserRole;
+import com.project.model.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheConfig;
 import org.springframework.cache.annotation.Cacheable;
@@ -29,7 +27,8 @@ public class MenuService {
     MenuRoleMapper menuRoleMapper;
     @Autowired
     UserRoleMapper userRoleMapper;
-
+    @Autowired
+    RoleMapper roleMapper;
     public List<Menu> getMenusByUserId() {
         QueryWrapper<UserRole> queryWrapper = new QueryWrapper();
         queryWrapper.eq("uid", ((User) SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getId());
@@ -54,7 +53,7 @@ public class MenuService {
                     each.add(menuChidren.get(i));
                 }
             }
-                menuParent.get(i1).setChildren(each);
+            menuParent.get(i1).setChildren(each);
         }
         return menuParent;
     }
@@ -62,13 +61,20 @@ public class MenuService {
     @Cacheable
     public List<Menu> getAllMenusWithRole() {
         QueryWrapper<Menu> queryWrapper = new QueryWrapper();
-        queryWrapper.ne("id", null);
-        return menuMapper.selectList(queryWrapper);
+        queryWrapper.orderByAsc("id");
+        List<Menu> list = menuMapper.selectList(queryWrapper);
+        for (int i = 0; i < list.size(); i++) {
+            QueryWrapper<MenuRole> queryWrapper1 = new QueryWrapper();
+            queryWrapper1.eq("mid", list.get(i).getId());
+            List<MenuRole> list1 = menuRoleMapper.selectList(queryWrapper1);
+            List<Role> list2=new ArrayList<>();
+            for (int i1 = 0; i1 < list1.size(); i1++) {
+               list2.add(roleMapper.selectById(list1.get(i1).getRid()));
+            }
+            list.get(i).setRoles(list2);
+        }
+        return list;
     }
-
-//    public List<Menu> getAllMenus() {
-//        return menuMapper.getAllMenus();
-//    }
 
     public List<Integer> getMidsByRid(Integer rid) {
         QueryWrapper<Menu> queryWrapper = new QueryWrapper();

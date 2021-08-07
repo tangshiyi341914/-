@@ -2,9 +2,11 @@ package com.project.services;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.project.mapper.RoleMapper;
 import com.project.mapper.UserMapper;
 import com.project.mapper.UserRoleMapper;
+import com.project.model.RespPageBean;
 import com.project.model.User;
 import com.project.model.UserRole;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +18,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -47,22 +50,30 @@ public class UserService implements UserDetailsService {
         user.setRole(roleMapper.selectById(userRoleMapper.selectOne(queryWrapper1).getRid()));
         return user;
     }
-
-    public List<User> getAllUsers() {
-
-        //构建条件构造器：QueryWrapper
-        QueryWrapper<User> queryWrapper = new QueryWrapper();
-        //通过条件构造器创建动态SQL语句
-        queryWrapper.orderByAsc("id");
-        List<User> list = userMapper.selectList(queryWrapper);
-        for (int i = 0; i < list.size(); i++) {
-            QueryWrapper<UserRole> queryWrapper1 = new QueryWrapper();
-            queryWrapper1.eq("uid",list.get(i).getId());
-           UserRole userRole= userRoleMapper.selectOne(queryWrapper1);
-            System.out.println(userRole);
-           list.get(i).setRole(roleMapper.selectById(userRole.getRid()));
+    @JsonIgnoreProperties
+    public RespPageBean getAllUsers(Integer page, Integer size, User user, Date[] beginDateScope) {
+        if (page != null && size != null) {
+            page = (page - 1) * size;
         }
-        return list;
+//        //构建条件构造器：QueryWrapper
+//        QueryWrapper<User> queryWrapper = new QueryWrapper();
+//        //通过条件构造器创建动态SQL语句
+//        queryWrapper.orderByAsc("id");
+//
+//        List<User> list = userMapper.selectList(queryWrapper);
+//        for (int i = 0; i < list.size(); i++) {
+//            QueryWrapper<UserRole> queryWrapper1 = new QueryWrapper();
+//            queryWrapper1.eq("uid",list.get(i).getId());
+//           UserRole userRole= userRoleMapper.selectOne(queryWrapper1);
+//            System.out.println(userRole);
+//           list.get(i).setRole(roleMapper.selectById(userRole.getRid()));
+//        }
+        List<User> data = userMapper.getAllUsers(page, size, user, beginDateScope);
+        Long total = userMapper.getTotal(user, beginDateScope);
+        RespPageBean bean = new RespPageBean();
+        bean.setData(data);
+        bean.setTotal(total);
+        return bean;
     }
 
     public boolean updateUserRole(Integer uid, Integer rid) {
@@ -100,5 +111,9 @@ public class UserService implements UserDetailsService {
             }
         }
         return false;
+    }
+
+    public int addUser(User user) {
+       return userMapper.insert(user);
     }
 }

@@ -19,6 +19,8 @@ server:
 mybatis-plus:
   configuration:
     map-underscore-to-camel-case: true
+  mapper-locations: classpath:xml/*.xml
+  type-aliases-package: com.project.model
 #用/swagger-ui.html访问
 swagger:
   title: project

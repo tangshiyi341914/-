@@ -5,11 +5,11 @@ import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.fasterxml.jackson.annotation.JsonFormat;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+
 import java.util.Collection;
 import java.util.Date;
 @Data
@@ -22,6 +22,8 @@ public class User implements UserDetails {
   private String name;
   private String phone;
   private String address;
+  @Getter(value = AccessLevel.NONE)
+  @JsonIgnore
   private Boolean enabled;
   private String username;
   private String password;
@@ -29,14 +31,23 @@ public class User implements UserDetails {
   @JsonFormat(pattern = "yyyy-MM-dd",timezone = "Asia/Shanghai")
   private Date birthday;
   private String gender;
-  @TableField(exist = false)
-  private Integer   page;   //当前页码数
-  @TableField(exist = false)
-  private Integer   rows;   //每页显示的件数
-  @TableField(exist = false)
-  private Integer[] ids;   //用于批量删除
+  @TableField(value = "cpnName")
+  private String cpnName="";
   @TableField(exist = false)
   private Role role;
+
+
+  @Override
+  public String getUsername() {
+    return username;
+  }
+
+
+  @Override
+  public String getPassword() {
+    return password;
+  }
+
   @Override
   public Collection<? extends GrantedAuthority> getAuthorities() {
     return null;
