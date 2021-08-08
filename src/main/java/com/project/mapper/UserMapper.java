@@ -17,6 +17,5 @@ import java.util.List;
 @Repository
 public interface UserMapper extends BaseMapper<User> {
     List<User> getAllUsers(@Param("page") Integer page, @Param("size") Integer size, @Param("user") User user, @Param("beginDateScope") Date[] beginDateScope);
-
     Long getTotal(@Param("user") User user,@Param("beginDateScope") Date[] beginDateScope);
 }

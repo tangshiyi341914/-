@@ -73,6 +73,7 @@ public class UserService implements UserDetailsService {
         RespPageBean bean = new RespPageBean();
         bean.setData(data);
         bean.setTotal(total);
+        System.out.println(bean.getData());
         return bean;
     }
 
@@ -89,11 +90,12 @@ public class UserService implements UserDetailsService {
     }
 
     public Integer deleteUserById(Integer id) {
+        QueryWrapper<UserRole> queryWrapper=new QueryWrapper<>();
+        queryWrapper.eq("uid",id);
+        userRoleMapper.delete(queryWrapper);
         return userMapper.deleteById(id);
     }
-
     public Integer updateUser(User user) {
-
         return userMapper.updateById(user);
     }
 

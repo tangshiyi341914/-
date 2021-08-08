@@ -1,16 +1,11 @@
 package com.project.services;
 
-import com.baomidou.mybatisplus.extension.service.IService;
-import com.project.model.UserRole;
-
 /**
- * <p>
- *  服务类
- * </p>
- *
- * @author 基因重组
- * @since 2021-08-04
+ * @author Sweary
+ * @packagename:com.project.services
+ * @classname:UserRoleService
+ * @date 2021/8/7 - 21:23
  */
-public interface UserRoleService extends IService<UserRole> {
+public class UserRoleService {
 
 }

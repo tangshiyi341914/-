@@ -9,16 +9,11 @@
         <result column="email" property="email" jdbcType="VARCHAR"/>
         <result column="phone" property="phone" jdbcType="VARCHAR"/>
         <result column="address" property="address" jdbcType="VARCHAR"/>
+        <result column="enabled" property="enabled" jdbcType="TINYINT"/>
+        <result column="cpnName" property="cpnName" jdbcType="VARCHAR"/>
     </resultMap>
-    <resultMap id="AllUserInfo" type="com.project.model.User" extends="BaseResultMap">
-        <association property="role" javaType="com.project.model.Role">
-            <id column="rid" property="id"/>
-            <result column="nameZh" property="nameZh"/>
-        </association>
-    </resultMap>
-    <select id="getAllUsers" resultMap="AllUserInfo">
-        select u.*,ur.* ,r.*  from user u,user_role ur,role r where u.id=ur.uid and ur.rid=r.id
-
+    <select id="getAllUsers" resultMap="BaseResultMap">
+        select u.*  from user u
         <if test="user.name !=null and user.name!=''">
             and u.name like concat('%',#{user.name},'%')
         </if>
@@ -42,4 +37,5 @@
             </if>
         </where>
     </select>
+
 </mapper>

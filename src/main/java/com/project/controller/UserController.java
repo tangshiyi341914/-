@@ -36,12 +36,13 @@ public class UserController {
     }
 
     @DeleteMapping("/{id}")
-    public RespBean deleteUserByEid(@PathVariable Integer id) {
-        if (userService.deleteUserById(id) == 1) {
+    public RespBean deleteUserById(@PathVariable Integer id) {
+        if (userService.deleteUserById(id) == 1 ) {
             return RespBean.ok("删除成功!");
         }
         return RespBean.error("删除失败!");
     }
+
 
     @PutMapping("/")
     public RespBean updateUser(@RequestBody User user) {

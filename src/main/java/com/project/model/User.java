@@ -23,7 +23,6 @@ public class User implements UserDetails {
   private String phone;
   private String address;
   @Getter(value = AccessLevel.NONE)
-  @JsonIgnore
   private Boolean enabled;
   private String username;
   private String password;
@@ -49,6 +48,7 @@ public class User implements UserDetails {
   }
 
   @Override
+  @JsonIgnore
   public Collection<? extends GrantedAuthority> getAuthorities() {
     return null;
   }
