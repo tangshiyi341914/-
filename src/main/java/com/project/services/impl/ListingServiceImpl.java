@@ -61,10 +61,30 @@ public class ListingServiceImpl extends ServiceImpl<ListingMapper, Listing> impl
     }
 
     public List<Listing> select(Map<String, Object> map) {
+        System.out.println(map);
+        String coalType= (String) map.get("coaltype");
+        int qmin= (int) map.get("qmin");
+        int qmax= (int) map.get("qmax");
+        int mmin= (int) map.get("mmin");
+        int mmax= (int) map.get("mmax");
+        int smin= (int) map.get("smin");
+        int smax= (int) map.get("smax");
         QueryWrapper<Listing> queryWrapper = new QueryWrapper();
+        if(!coalType.equals("全部")){
+            queryWrapper.eq("coalType",coalType);
+        }
+        queryWrapper.ge("qnetar",qmin);
+        queryWrapper.le("qnetar",qmax);
+        queryWrapper.ge("m",mmin);
+        queryWrapper.le("m",mmax);
+        queryWrapper.ge("stad",smin);
+        queryWrapper.le("stad",smax);
         //一些条件
+        System.out.println("搜索结果如下：");
         queryWrapper.eq("status", 2);
-        return listMapper.selectList(queryWrapper);
+        List<Listing> listings = listMapper.selectList(queryWrapper);
+        System.out.println(listings);
+        return listings;
     }
     public Map<String, Object> selectListStatus(int current, int size, int status) {
         Page<Listing> page = new Page<>(current, size);

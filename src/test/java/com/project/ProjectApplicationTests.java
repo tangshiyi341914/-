@@ -1,5 +1,6 @@
 package com.project;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.project.mapper.ListingMapper;
 import com.project.model.Listing;
@@ -26,10 +27,25 @@ class ProjectApplicationTests {
 
     @Test
     void selectTest() {
-        Page<Listing> page = new Page<>(3, -1);
-        listingMapper.selectPage(page, null);
-//        List<Listing> list = listingMapper.selectList(listingPage);
-        page.getRecords().forEach(System.out::println);
+        String coalType= "全部";
+        double qmin=2000;
+        double qmax= 4500;
+        double mmin=5;
+        double mmax= 15;
+        double smin= 4;
+        double smax= 26;
+        QueryWrapper<Listing> queryWrapper = new QueryWrapper();
+        queryWrapper.ge("qnetar",qmin);
+        queryWrapper.le("qnetar",qmax);
+        queryWrapper.ge("m",mmin);
+        queryWrapper.le("m",mmax);
+        queryWrapper.ge("stad",smin);
+        queryWrapper.le("stad",smax);
+        //一些条件
+        System.out.println("搜索结果如下：");
+        queryWrapper.eq("status", 2);
+        List<Listing> listings = listingMapper.selectList(queryWrapper);
+        System.out.println(listings);
     }
 
     @Test

@@ -20,4 +20,7 @@ public class UserRole {
     private Integer rid;
 
 
+    public UserRole(Integer uid, Integer rid) {
+        this.uid=uid;this.rid =rid;
+    }
 }

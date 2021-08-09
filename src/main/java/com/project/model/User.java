@@ -33,7 +33,7 @@ public class User implements UserDetails {
   @TableField(value = "cpnName")
   private String cpnName="";
   @TableField(exist = false)
-  private Role role;
+  private String role;
 
 
   @Override

@@ -2,7 +2,6 @@ package com.project.services;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.project.mapper.RoleMapper;
 import com.project.mapper.UserMapper;
 import com.project.mapper.UserRoleMapper;
@@ -47,10 +46,10 @@ public class UserService implements UserDetailsService {
         }
         QueryWrapper<UserRole> queryWrapper1 = new QueryWrapper<>();
         queryWrapper1.eq("uid", user.getId());
-        user.setRole(roleMapper.selectById(userRoleMapper.selectOne(queryWrapper1).getRid()));
+        user.setRole(roleMapper.selectById(userRoleMapper.selectOne(queryWrapper1).getRid()).getNameZh());
         return user;
     }
-    @JsonIgnoreProperties
+
     public RespPageBean getAllUsers(Integer page, Integer size, User user, Date[] beginDateScope) {
         if (page != null && size != null) {
             page = (page - 1) * size;
@@ -69,6 +68,7 @@ public class UserService implements UserDetailsService {
 //           list.get(i).setRole(roleMapper.selectById(userRole.getRid()));
 //        }
         List<User> data = userMapper.getAllUsers(page, size, user, beginDateScope);
+
         Long total = userMapper.getTotal(user, beginDateScope);
         RespPageBean bean = new RespPageBean();
         bean.setData(data);
@@ -116,6 +116,15 @@ public class UserService implements UserDetailsService {
     }
 
     public int addUser(User user) {
-       return userMapper.insert(user);
+
+         if (userMapper.insert(user)==1){
+             QueryWrapper<User> queryWrapper =new QueryWrapper<>();
+             queryWrapper.eq("name",user.getName());
+             userMapper.selectOne(queryWrapper);
+             userRoleMapper.insert(new UserRole(userMapper.selectOne(queryWrapper).getId(),2));
+             return 1;
+         }else {
+             return 0;
+         }
     }
 }

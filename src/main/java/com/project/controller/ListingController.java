@@ -123,7 +123,8 @@ public class ListingController {
     @ApiOperation("查询指定的牌，传入一个条件map")
     @PostMapping("/select")
     public RespBean select(@RequestBody Map<String, Object> map) {
-        return RespBean.ok("按需选择成功", listingService.select(map));
+        List<Listing> select = listingService.select(map);
+        return RespBean.ok("共"+select.size()+"条搜索结果",select );
     }
 }
 
