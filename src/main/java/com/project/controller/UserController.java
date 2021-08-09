@@ -43,7 +43,6 @@ public class UserController {
         return RespBean.error("删除失败!");
     }
 
-
     @PutMapping("/")
     public RespBean updateUser(@RequestBody User user) {
         if (userService.updateUser(user) == 1) {

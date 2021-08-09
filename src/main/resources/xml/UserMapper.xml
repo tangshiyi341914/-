@@ -14,12 +14,14 @@
     </resultMap>
     <select id="getAllUsers" resultMap="BaseResultMap">
         select u.*  from user u
+        <where>
         <if test="user.name !=null and user.name!=''">
             and u.name like concat('%',#{user.name},'%')
         </if>
         <if test="beginDateScope !=null">
             and u.birthday between #{beginDateScope[0]} and #{beginDateScope[1]}
         </if>
+        </where>
         <if test="page !=null and size!=null">
             limit #{page},#{size}
         </if>
@@ -29,11 +31,11 @@
         <where>
             <if test="user!=null">
                 <if test="user.name !=null and user.name!=''">
-                    and u.name like concat('%',#{user.name},'%')
+                   and u.name like concat('%',#{user.name},'%')
                 </if>
             </if>
             <if test="beginDateScope !=null">
-                and u.birthday between #{beginDateScope[0]} and #{beginDateScope[1]}
+                  and u.birthday between #{beginDateScope[0]} and #{beginDateScope[1]}
             </if>
         </where>
     </select>
