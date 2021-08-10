@@ -54,19 +54,6 @@ public class UserService implements UserDetailsService {
         if (page != null && size != null) {
             page = (page - 1) * size;
         }
-//        //构建条件构造器：QueryWrapper
-//        QueryWrapper<User> queryWrapper = new QueryWrapper();
-//        //通过条件构造器创建动态SQL语句
-//        queryWrapper.orderByAsc("id");
-//
-//        List<User> list = userMapper.selectList(queryWrapper);
-//        for (int i = 0; i < list.size(); i++) {
-//            QueryWrapper<UserRole> queryWrapper1 = new QueryWrapper();
-//            queryWrapper1.eq("uid",list.get(i).getId());
-//           UserRole userRole= userRoleMapper.selectOne(queryWrapper1);
-//            System.out.println(userRole);
-//           list.get(i).setRole(roleMapper.selectById(userRole.getRid()));
-//        }
         List<User> data = userMapper.getAllUsers(page, size, user, beginDateScope);
 
         Long total = userMapper.getTotal(user, beginDateScope);
@@ -116,15 +103,6 @@ public class UserService implements UserDetailsService {
     }
 
     public int addUser(User user) {
-
-         if (userMapper.insert(user)==1){
-             QueryWrapper<User> queryWrapper =new QueryWrapper<>();
-             queryWrapper.eq("name",user.getName());
-             userMapper.selectOne(queryWrapper);
-             userRoleMapper.insert(new UserRole(userMapper.selectOne(queryWrapper).getId(),2));
-             return 1;
-         }else {
-             return 0;
-         }
+        return userMapper.insert(user);
     }
 }
