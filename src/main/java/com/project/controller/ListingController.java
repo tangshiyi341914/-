@@ -22,7 +22,7 @@ import java.util.Map;
  */
 @RestController
 @RequestMapping("/list")
-@Api(value = "挂牌摘牌的控制器",description = "关于挂摘牌，管理员审核的控制器")
+@Api(value = "挂牌摘牌的控制器", description = "关于挂摘牌，管理员审核的控制器")
 public class ListingController {
     @Autowired
     private ListingServiceImpl listingService;
@@ -35,6 +35,11 @@ public class ListingController {
         List<Listing> list = listingService.selectList();
         System.out.println(list);
         return RespBean.ok("已经获取到所有订单信息！", list);
+    }
+    @GetMapping("/getListByno")
+    public RespBean getListByno(@PathVariable("no") String no){
+        Listing listing=listingService.getById(no);
+        return RespBean.ok("获取交易记录成功！",listing);
     }
 
     @ApiOperation("current:当前页，" +
@@ -123,8 +128,13 @@ public class ListingController {
     @ApiOperation("查询指定的牌，传入一个条件map")
     @PostMapping("/select")
     public RespBean select(@RequestBody Map<String, Object> map) {
-        List<Listing> select = listingService.select(map);
-        return RespBean.ok("共"+select.size()+"条搜索结果",select );
+        Map<String, Object> select = listingService.select(map);
+        Boolean isPage = (Boolean) map.get("isPage");
+        if (isPage)
+            return RespBean.ok("", select);
+        else
+            return RespBean.ok("共" + select.get("total") + "条搜索结果", select);
+
     }
 }
 

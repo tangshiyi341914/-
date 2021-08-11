@@ -84,5 +84,17 @@ public class UserRoleService {
         }
         return false;
     }
+    public int addUserRole(Integer uid){
+        int result=0;
+        QueryWrapper<UserRole> queryWrapper = new QueryWrapper<>();
+        queryWrapper.eq("uid", uid);
+        UserRole userRole = userRoleMapper.selectOne(queryWrapper);
+        if(userRole==null){
+            userRoleMapper.insert(new UserRole(uid,2));
+            result=1;
+        }
+        return result;
+    }
+
 }
 

@@ -60,7 +60,7 @@ public class ListingServiceImpl extends ServiceImpl<ListingMapper, Listing> impl
         return listMapper.deleteById(id);
     }
 
-    public List<Listing> select(Map<String, Object> map) {
+    public Map<String, Object> select(Map<String, Object> map) {
         System.out.println(map);
         String coalType= (String) map.get("coaltype");
         int qmin= (int) map.get("qmin");
@@ -69,10 +69,14 @@ public class ListingServiceImpl extends ServiceImpl<ListingMapper, Listing> impl
         int mmax= (int) map.get("mmax");
         int smin= (int) map.get("smin");
         int smax= (int) map.get("smax");
+        int identity= (int) map.get("identity");
+        int current= (int) map.get("current");
+        int size= (int) map.get("size");
         QueryWrapper<Listing> queryWrapper = new QueryWrapper();
         if(!coalType.equals("全部")){
             queryWrapper.eq("coalType",coalType);
         }
+        queryWrapper.eq("identity", identity);
         queryWrapper.ge("qnetar",qmin);
         queryWrapper.le("qnetar",qmax);
         queryWrapper.ge("m",mmin);
@@ -80,11 +84,15 @@ public class ListingServiceImpl extends ServiceImpl<ListingMapper, Listing> impl
         queryWrapper.ge("stad",smin);
         queryWrapper.le("stad",smax);
         //一些条件
-        System.out.println("搜索结果如下：");
         queryWrapper.eq("status", 2);
-        List<Listing> listings = listMapper.selectList(queryWrapper);
-        System.out.println(listings);
-        return listings;
+        Page<Listing> page = new Page<>(current, size);
+        listMapper.selectPage(page,queryWrapper);
+        Map<String, Object> result = new HashMap<>();
+        System.out.println("total:"+page.getTotal());
+        System.out.println(page.getRecords());
+        result.put("total", page.getTotal());
+        result.put("records", page.getRecords());
+        return result;
     }
     public Map<String, Object> selectListStatus(int current, int size, int status) {
         Page<Listing> page = new Page<>(current, size);

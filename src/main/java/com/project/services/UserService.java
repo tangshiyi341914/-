@@ -101,8 +101,10 @@ public class UserService implements UserDetailsService {
         }
         return false;
     }
-
     public int addUser(User user) {
+        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+        String newPwd=encoder.encode(user.getPassword());
+        user.setPassword(newPwd);
         return userMapper.insert(user);
     }
 }
