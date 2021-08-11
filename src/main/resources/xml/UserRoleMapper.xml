@@ -13,15 +13,15 @@
         <result column="cpnName" property="cpnName" jdbcType="VARCHAR"/>
     </resultMap>
     <select id="getAllUserRoles" resultMap="BaseResultMap">
-        select u.* from user u
+        select u.*  from user u
         <where>
             <if test="user.name !=null and user.name!=''">
                 and u.name like concat('%',#{user.name},'%')
             </if>
-            <if test="page !=null and size!=null">
-                limit #{page},#{size}
-            </if>
         </where>
+        <if test="page !=null and size!=null">
+            limit #{page},#{size}
+        </if>
     </select>
     <select id="getTotal" resultType="java.lang.Long">
         select count(*) from user u
@@ -33,4 +33,5 @@
             </if>
         </where>
     </select>
+
 </mapper>
