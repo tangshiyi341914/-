@@ -18,8 +18,6 @@ public class SystemConfigController {
     MenuService menuService;
     @GetMapping("/menu")
     public List<Menu> getMenusByUserId() {
-        List<Menu> list =menuService.getMenusByUserId();
-        System.out.println(list);
-        return list;
+        return menuService.getMenusByUserId();
     }
 }

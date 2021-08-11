@@ -51,7 +51,6 @@ public class UserRoleService {
         RespPageBean bean = new RespPageBean();
         bean.setData(data);
         bean.setTotal(total);
-        System.out.println(bean.getData());
         return bean;
     }
 

@@ -24,6 +24,7 @@ public class MenuRole {
     @TableField(exist = false)
     private String  mName;
 
-    public MenuRole(Integer rid, Integer mid) {
+    public MenuRole(Integer mid, Integer rid) {
+        this.mid=mid;this.rid=rid;
     }
 }

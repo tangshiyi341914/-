@@ -4,14 +4,12 @@ spring:
     username: root
     password: 341914
     url: jdbc:mysql://localhost:3306/project?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
-  cache:
-    cache-names: menus_cache
-  rabbitmq:
-    username: admin
-    password: admin
-    virtual-host: /
-    host: 47.101.43.9
-    port: 5672
+rabbitmq:
+  username: admin
+  password: admin
+  virtual-host: /
+  host: 47.101.43.9
+  port: 5672
 server:
   port: 8081
   compression:
