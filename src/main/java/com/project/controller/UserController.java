@@ -7,6 +7,7 @@ import com.project.model.User;
 import com.project.services.MenuService;
 import com.project.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
@@ -29,6 +30,8 @@ public class UserController {
     MenuService menuService;
     @PostMapping("/")
     public RespBean addUser(@RequestBody User user) {
+        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+        user.setPassword(encoder.encode(user.getPassword()));
         if (userService.addUser(user) == 1) {
             return RespBean.ok("添加成功!");
         }
@@ -45,6 +48,8 @@ public class UserController {
 
     @PutMapping("/")
     public RespBean updateUser(@RequestBody User user) {
+        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+        user.setPassword(encoder.encode(user.getPassword()));
         if (userService.updateUser(user) == 1) {
             return RespBean.ok("更新成功!");
         }
