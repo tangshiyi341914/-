@@ -65,7 +65,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 "/swagger-resources", // 用来获取api-docs的URI
                 "/swagger-resources/configuration/security", // 安全选项
                 "/swagger-resources/**",//补充路径，近期在搭建swagger接口文档时，通过浏览器控制台发现该/webjars路径下的文件被拦截，故加上此过滤条件即可。(2020-10-23)
-                "/webjars/**", "/sendDirectMessage","/*/UserRegister","/*/CompanyRegister","/UserRegister/**","/UserRegister");
+                "/webjars/**", "/sendDirectMessage", "/*/UserRegister", "/*/CompanyRegister", "/UserRegister/**", "/UserRegister");
 
 //                ,"/**");//测试api用
     }

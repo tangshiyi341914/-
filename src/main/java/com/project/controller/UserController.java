@@ -55,7 +55,7 @@ public class UserController {
         return RespBean.error("更新失败!");
     }
     @RequestMapping("/")
-    public RespPageBean getAllUsers(@RequestParam(defaultValue = "1") Integer page, @RequestParam(defaultValue = "10") Integer size, User user, Date[] beginDateScope)
+    public RespPageBean getAllUsers(@RequestParam(defaultValue = "1") Integer page, @RequestParam(defaultValue = "10") Integer size, User user,Date[] beginDateScope)
     {
         return userService.getAllUsers(page, size, user, beginDateScope);
     }

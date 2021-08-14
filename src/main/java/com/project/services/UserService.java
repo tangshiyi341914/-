@@ -55,7 +55,6 @@ public class UserService implements UserDetailsService {
             page = (page - 1) * size;
         }
         List<User> data = userMapper.getAllUsers(page, size, user, beginDateScope);
-
         Long total = userMapper.getTotal(user, beginDateScope);
         RespPageBean bean = new RespPageBean();
         bean.setData(data);
