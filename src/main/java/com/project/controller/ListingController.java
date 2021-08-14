@@ -61,7 +61,6 @@ public class ListingController {
         int current = (int) map.get("current");
         int size = (int) map.get("size");
         int identity = (int) map.get("identity");
-
         return RespBean.ok("已经获取到指定订单信息！", listingService.selectListPage(current, size, identity));
     }
 
@@ -135,6 +134,9 @@ public class ListingController {
         System.out.println("/buy  no:"+no+",id1:"+id1);
         listingService.setStatus(no, 3);//交易成功
         Integer id2 = listingService.getById(no).getProposer();
+        if(id2==id1){
+            return RespBean.error("不能购买自己的商品！");
+        }
         //这个信息应该被存入order表
         if(tOrderService.insert(no,id1,id2)>0)
             return RespBean.ok("购买成功");
