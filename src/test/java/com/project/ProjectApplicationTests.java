@@ -1,10 +1,12 @@
 package com.project;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.project.mapper.ListingMapper;
 import com.project.model.Listing;
+import com.project.model.RespBean;
+import com.project.model.TOrder;
 import com.project.services.impl.ListingServiceImpl;
+import com.project.services.impl.TOrderServiceImpl;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -19,7 +21,8 @@ class ProjectApplicationTests {
     private ListingMapper listingMapper;
     @Autowired
     private ListingServiceImpl listingService;
-
+    @Autowired
+    private TOrderServiceImpl tOrderService;
     @Test
     void contextLoads() {
         System.out.println(listingService.selectListPage(1, 10, 1));
@@ -55,5 +58,17 @@ class ProjectApplicationTests {
         map.put("current", 2);
         map.put("size", 6);
         System.out.println(map);
+    }
+    @Test
+    void Test2(){
+        int no=1,id1=1;
+        listingService.setStatus(no, 3);//交易成功
+        Integer id2 = listingService.getById(no).getProposer();
+        //这个信息应该被存入order表
+        if(tOrderService.insert(no,id1,id2)>0)
+            System.out.println("successful");
+        else
+            System.out.println("failed");
+
     }
 }

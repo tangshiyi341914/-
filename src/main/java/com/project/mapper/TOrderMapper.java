@@ -2,6 +2,7 @@ package com.project.mapper;
 
 import com.project.model.TOrder;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import org.springframework.stereotype.Repository;
 
 /**
  * <p>
@@ -11,6 +12,7 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
  * @author 基因重组
  * @since 2021-08-04
  */
+@Repository
 public interface TOrderMapper extends BaseMapper<TOrder> {
 
 }

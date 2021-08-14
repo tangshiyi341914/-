@@ -33,10 +33,11 @@ public class ListingServiceImpl extends ServiceImpl<ListingMapper, Listing> impl
 
     public Map<String, Object> selectListPage(int current, int size, int identity) {
         Page<Listing> page = new Page<>(current, size);
+        QueryWrapper<Listing> queryWrapper = new QueryWrapper();
+        queryWrapper.eq("status", 2);
         if (identity == 2) {
-            listMapper.selectPage(page, null);
+            listMapper.selectPage(page, queryWrapper);
         } else {
-            QueryWrapper<Listing> queryWrapper = new QueryWrapper();
             queryWrapper.eq("identity", identity);
             listMapper.selectPage(page, queryWrapper);
         }

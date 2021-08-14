@@ -2,12 +2,10 @@ package com.project.model;
 
 import java.util.Date;
 
-import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.*;
+
 import java.io.Serializable;
 
-import com.baomidou.mybatisplus.annotation.TableId;
-import com.baomidou.mybatisplus.annotation.TableName;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
@@ -27,7 +25,6 @@ import lombok.EqualsAndHashCode;
 @TableName("list")
 public class Listing implements Serializable {
 
-    private static final long serialVersionUID = 1L;
 
     @ApiModelProperty(value = "挂牌者身份，0:买家  1:卖家")
     private Integer identity;
@@ -35,26 +32,27 @@ public class Listing implements Serializable {
     @ApiModelProperty(value = "挂牌单位")
     @TableField("cpnName")
     private String cpnname;
+
     @TableId(type = IdType.ASSIGN_UUID)
     @ApiModelProperty(value = "单据编号")
-    private String no;
+    private Integer no;
 
     @ApiModelProperty(value = "申请人")
-    private String proposer;
+    private Integer proposer;
 
     @ApiModelProperty(value = "签发人")
     private String signer;
 
     @ApiModelProperty(value = "申请日期")
-    @TableField("startTime")
+    @TableField(fill = FieldFill.INSERT)
     private Date starttime;
 
     @ApiModelProperty(value = "交货时间-起始")
-    @TableField("shipStartTime")
+    @TableField(fill = FieldFill.UPDATE)
     private Date shipstarttime;
 
     @ApiModelProperty(value = "交货时间-结束")
-    @TableField("shipEndTime")
+    @TableField(fill = FieldFill.UPDATE)
     private Date shipendtime;
 
     @ApiModelProperty(value = "煤种")

@@ -3,12 +3,15 @@ package com.project.controller;
 
 import com.project.model.Listing;
 import com.project.model.RespBean;
+import com.project.model.TOrder;
 import com.project.services.impl.ListingServiceImpl;
+import com.project.services.impl.TOrderServiceImpl;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -26,7 +29,8 @@ import java.util.Map;
 public class ListingController {
     @Autowired
     private ListingServiceImpl listingService;
-
+    @Autowired
+    private TOrderServiceImpl tOrderService;
     @GetMapping("/all")
     @ApiOperation("返回所有订单信息，不论状态，不论买卖")
     public RespBean getList() {
@@ -36,9 +40,14 @@ public class ListingController {
         System.out.println(list);
         return RespBean.ok("已经获取到所有订单信息！", list);
     }
-    @GetMapping("/getListByno")
-    public RespBean getListByno(@PathVariable("no") String no){
-        Listing listing=listingService.getById(no);
+    @PostMapping("/getListByUser")
+    public RespBean getListByno(@RequestParam("user") Integer user){
+        System.out.println("user:"+user);
+        List<TOrder> tOrderList=tOrderService.getNoByUser(user);
+        List<Listing> listing=new ArrayList<>();
+        for(TOrder t:tOrderList){
+            listing.add(listingService.getById(t.getListid()));
+        }
         return RespBean.ok("获取交易记录成功！",listing);
     }
 
@@ -72,8 +81,11 @@ public class ListingController {
     @ApiOperation("传入一个需要新增的牌对象")
     @PostMapping("/add")
     public RespBean addListing(@RequestBody Listing listing) {
+        listing.setStatus(2);//直接审核通过
+        System.out.println("/add");
+        System.out.println(listing);
         if (listingService.insert(listing) > 0) {
-            return RespBean.ok("挂牌信息提交成功，等待管理员审核");
+            return RespBean.ok("挂牌信息提交成功!可在大厅查看");
         } else {
             return RespBean.error("挂牌失败");
         }
@@ -119,10 +131,15 @@ public class ListingController {
     @PostMapping("/buy")
     public RespBean buy(@RequestBody Map<String, Object> map) {
         int no = (int) map.get("no");
-        int id = (int) map.get("id");
+        int id1 = (int) map.get("id");
+        System.out.println("/buy  no:"+no+",id1:"+id1);
         listingService.setStatus(no, 3);//交易成功
+        Integer id2 = listingService.getById(no).getProposer();
         //这个信息应该被存入order表
-        return RespBean.ok("这里是 list");
+        if(tOrderService.insert(no,id1,id2)>0)
+            return RespBean.ok("购买成功");
+        else
+            return RespBean.error("购买失败");
     }
 
     @ApiOperation("查询指定的牌，传入一个条件map")
