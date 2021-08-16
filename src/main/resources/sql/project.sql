@@ -11,7 +11,7 @@
  Target Server Version : 80015
  File Encoding         : 65001
 
- Date: 10/08/2021 12:53:56
+ Date: 16/08/2021 15:56:10
 */
 
 SET NAMES utf8mb4;
@@ -22,15 +22,15 @@ SET FOREIGN_KEY_CHECKS = 0;
 -- ----------------------------
 DROP TABLE IF EXISTS `company`;
 CREATE TABLE `company`  (
-                            `cpnId` int(11) NOT NULL AUTO_INCREMENT,
-                            `cpnName` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-                            `legalPerson` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-                            `regstArea` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-                            `regstCapital` int(11) NOT NULL,
-                            `cpnEmail` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-                            `introduction` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-                            PRIMARY KEY (`cpnId`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+  `cpnId` int(11) NOT NULL AUTO_INCREMENT,
+  `cpnName` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `legalPerson` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `regstArea` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `regstCapital` int(11) NOT NULL,
+  `cpnEmail` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `introduction` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  PRIMARY KEY (`cpnId`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of company
@@ -38,23 +38,25 @@ CREATE TABLE `company`  (
 INSERT INTO `company` VALUES (1, '内蒙古满世煤炭集团罐子沟煤炭有限责任公司', '焦存福', '内蒙古自治区鄂尔多斯市准格尔旗龙口镇', 17000, 'weah201@126.com', '内蒙古满世煤炭集团罐子沟煤炭有限责任公司成立于2009年01月21日，注册地位于内蒙古自治区鄂尔多斯市准格尔旗龙口镇，法定代表人为焦存福。经营范围包括许可经营项目：煤炭生产、销售。 一般经营项目：无内蒙古满世煤炭集团罐子沟煤炭有限责任公司对外投资1家公司。');
 INSERT INTO `company` VALUES (2, '中煤黑龙江煤炭化工（集团）有限公司', '王树斌', '哈尔滨市南岗区大顺街７号', 325972, '80560519999@qq.com', '是集煤炭、化工、煤制油、页岩油、城市燃气生产、销售、输送于一体的国有大型煤炭化工企业，是中国中煤能源集团公司发展煤化工产业的基地和平台，其前身是哈尔滨煤炭化工有限公司，2006年9月，经国务院国资委正式批准无偿划转中国中煤能源集团公司，于2007年3月14日注册，为中国中煤能源集团公司控股的二级子公司。现有职工11936人，注册资本17.3亿元，资产总额33亿元。具有建设煤化工基地的煤炭资源、水资源、人才资源等诸多优势。');
 INSERT INTO `company` VALUES (3, '山西煤炭进出口集团煤炭物流有限公司', '张伯平', '甘肃省武威市凉州区武南镇二马路11号', 21000, 'mzy82127@hotmail.com', '山西煤炭进出口集团武威铁路煤炭物流有限公司成立于2011年11月18日，主要经营范围为铁路投资、建设、运营及管理等。  ');
+INSERT INTO `company` VALUES (4, 'string', 'string', 'string', 0, 'string', 'string');
+INSERT INTO `company` VALUES (5, '1', '1', '1', 1, '123@qq.com', '无');
 
 -- ----------------------------
 -- Table structure for employee
 -- ----------------------------
 DROP TABLE IF EXISTS `employee`;
 CREATE TABLE `employee`  (
-                             `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '员工编号',
-                             `name` varchar(10) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '员工姓名',
-                             `gender` char(4) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '性别',
-                             `birthday` date NULL DEFAULT NULL COMMENT '出生日期',
-                             `idCard` char(18) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '身份证号',
-                             `nativePlace` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '籍贯',
-                             `email` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '邮箱',
-                             `phone` varchar(11) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '电话号码',
-                             `address` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '联系地址',
-                             PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '员工编号',
+  `name` varchar(10) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '员工姓名',
+  `gender` char(4) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '性别',
+  `birthday` date NULL DEFAULT NULL COMMENT '出生日期',
+  `idCard` char(18) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '身份证号',
+  `nativePlace` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '籍贯',
+  `email` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '邮箱',
+  `phone` varchar(11) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '电话号码',
+  `address` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '联系地址',
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 1941 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of employee
@@ -682,122 +684,126 @@ INSERT INTO `employee` VALUES (1941, 'javaboy', '男', '2019-11-24', '6101441999
 -- ----------------------------
 DROP TABLE IF EXISTS `list`;
 CREATE TABLE `list`  (
-                         `identity` int(11) NULL DEFAULT NULL COMMENT '挂牌者身份',
-                         `cpnName` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '挂牌单位',
-                         `no` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '单据编号',
-                         `proposer` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '申请人',
-                         `signer` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '签发人',
-                         `startTime` datetime NULL DEFAULT NULL COMMENT '申请日期',
-                         `shipStartTime` datetime NULL DEFAULT NULL COMMENT '交货时间-起始',
-                         `shipEndTime` datetime NULL DEFAULT NULL COMMENT '交货时间-结束',
-                         `coalType` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '煤种',
-                         `amount` double NULL DEFAULT NULL COMMENT '采购数量',
-                         `transportation` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '运输方式',
-                         `deliveryPlace` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '交货地点',
-                         `clearing` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '结算方式',
-                         `acceptance` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '验收方式',
-                         `payment` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '结算付款方式',
-                         `isPayDeposit` int(11) NULL DEFAULT NULL COMMENT '是否要求缴纳保证金',
-                         `price` double NULL DEFAULT NULL COMMENT '保证金单价',
-                         `qnetar` double NULL DEFAULT NULL COMMENT '收到基低位发热量Qnetar（KCal/kg）',
-                         `start` double NULL DEFAULT NULL COMMENT '收到基全硫Start',
-                         `m` double NULL DEFAULT NULL COMMENT '全水分M',
-                         `rba` double NULL DEFAULT NULL COMMENT '收到基灰分',
-                         `lrbvc` double NULL DEFAULT NULL COMMENT '收到基挥发分最低',
-                         `hrbvc` double NULL DEFAULT NULL COMMENT '收到基挥发最高',
-                         `mad` double NULL DEFAULT NULL COMMENT '空干基水分Mad',
-                         `stad` double NULL DEFAULT NULL COMMENT '空干基全硫Stad',
-                         `ladbv` double NULL DEFAULT NULL COMMENT '空干基挥发分最低',
-                         `hadbv` double NULL DEFAULT NULL COMMENT '空干基挥发分最高',
-                         `qgrd` double NULL DEFAULT NULL COMMENT '干基高位发热量qgrd',
-                         `std` double NULL DEFAULT NULL COMMENT '干基全硫Std',
-                         `ldwgbv` double NULL DEFAULT NULL COMMENT '干燥无灰色基挥发分最低',
-                         `hdwgbv` double NULL DEFAULT NULL COMMENT '干燥无灰基挥发分最高',
-                         `granularity` double NULL DEFAULT NULL COMMENT '粒度（mm）',
-                         `ST` double NULL DEFAULT NULL COMMENT '灰熔点ST（°C）',
-                         `HG` double NULL DEFAULT NULL COMMENT '哈氏可磨系数（HG）',
-                         `comment` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '备注',
-                         `status` int(11) NULL DEFAULT NULL COMMENT '状态',
-                         PRIMARY KEY (`no`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+  `identity` int(11) NULL DEFAULT NULL COMMENT '挂牌者身份',
+  `cpnName` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '挂牌单位',
+  `no` int(11) NOT NULL COMMENT '单据编号',
+  `proposer` int(11) NULL DEFAULT NULL COMMENT '申请人',
+  `signer` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '签发人',
+  `startTime` datetime NULL DEFAULT NULL COMMENT '申请日期',
+  `shipStartTime` datetime NULL DEFAULT NULL COMMENT '交货时间-起始',
+  `shipEndTime` datetime NULL DEFAULT NULL COMMENT '交货时间-结束',
+  `coalType` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '煤种',
+  `amount` double NULL DEFAULT NULL COMMENT '采购数量',
+  `transportation` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '运输方式',
+  `deliveryPlace` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '交货地点',
+  `clearing` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '结算方式',
+  `acceptance` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '验收方式',
+  `payment` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '结算付款方式',
+  `isPayDeposit` int(11) NULL DEFAULT NULL COMMENT '是否要求缴纳保证金',
+  `price` double NULL DEFAULT NULL COMMENT '保证金单价',
+  `qnetar` double NULL DEFAULT NULL COMMENT '收到基低位发热量Qnetar（KCal/kg）',
+  `start` double NULL DEFAULT NULL COMMENT '收到基全硫Start',
+  `m` double NULL DEFAULT NULL COMMENT '全水分M',
+  `rba` double NULL DEFAULT NULL COMMENT '收到基灰分',
+  `lrbvc` double NULL DEFAULT NULL COMMENT '收到基挥发分最低',
+  `hrbvc` double NULL DEFAULT NULL COMMENT '收到基挥发最高',
+  `mad` double NULL DEFAULT NULL COMMENT '空干基水分Mad',
+  `stad` double NULL DEFAULT NULL COMMENT '空干基全硫Stad',
+  `ladbv` double NULL DEFAULT NULL COMMENT '空干基挥发分最低',
+  `hadbv` double NULL DEFAULT NULL COMMENT '空干基挥发分最高',
+  `qgrd` double NULL DEFAULT NULL COMMENT '干基高位发热量qgrd',
+  `std` double NULL DEFAULT NULL COMMENT '干基全硫Std',
+  `ldwgbv` double NULL DEFAULT NULL COMMENT '干燥无灰色基挥发分最低',
+  `hdwgbv` double NULL DEFAULT NULL COMMENT '干燥无灰基挥发分最高',
+  `granularity` double NULL DEFAULT NULL COMMENT '粒度（mm）',
+  `ST` double NULL DEFAULT NULL COMMENT '灰熔点ST（°C）',
+  `HG` double NULL DEFAULT NULL COMMENT '哈氏可磨系数（HG）',
+  `comment` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '备注',
+  `status` int(11) NULL DEFAULT NULL COMMENT '状态',
+  PRIMARY KEY (`no`) USING BTREE
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of list
 -- ----------------------------
-INSERT INTO `list`(`identity`, `cpnName`, `no`, `proposer`, `signer`, `startTime`, `shipStartTime`, `shipEndTime`, `coalType`, `amount`, `transportation`, `deliveryPlace`, `clearing`, `acceptance`, `payment`, `isPayDeposit`, `price`, `qnetar`, `start`, `m`, `rba`, `lrbvc`, `hrbvc`, `mad`, `stad`, `ladbv`, `hadbv`, `qgrd`, `std`, `ldwgbv`, `hdwgbv`, `granularity`, `ST`, `HG`, `comment`, `status`) VALUES (0, '日翔化工公司', '1', '张三', '日翔化工公司', '2021-08-05 09:58:41', '2021-08-12 09:58:48', '2021-08-17 09:59:26', '动力煤', 100, '海运', '江西', '现结', '现金', '现金', 1, 50000, 2500, 0.2, 20, 0.4, 0.1, 0.3, 0.3, 23, 0.05, 0.34, 0.3, 0.6, 0.3, 0.39, 300, 900, 450, '量大急求！', 2);
-INSERT INTO `list`(`identity`, `cpnName`, `no`, `proposer`, `signer`, `startTime`, `shipStartTime`, `shipEndTime`, `coalType`, `amount`, `transportation`, `deliveryPlace`, `clearing`, `acceptance`, `payment`, `isPayDeposit`, `price`, `qnetar`, `start`, `m`, `rba`, `lrbvc`, `hrbvc`, `mad`, `stad`, `ladbv`, `hadbv`, `qgrd`, `std`, `ldwgbv`, `hdwgbv`, `granularity`, `ST`, `HG`, `comment`, `status`) VALUES (1, '永盛化工公司', '100', '张三', '永盛化工公司', '2021-08-05 09:58:41', '2021-08-12 09:58:48', '2021-08-17 09:59:26', '新型煤', 100, '海运', '广东', '现结', '现金', '现金', 1, 50000, 1500, 0.2, 5, 0.4, 0.1, 0.3, 0.3, 30, 0.05, 0.34, 0.3, 0.6, 0.3, 0.39, 300, 900, 450, '量大急求！', 2);
-INSERT INTO `list`(`identity`, `cpnName`, `no`, `proposer`, `signer`, `startTime`, `shipStartTime`, `shipEndTime`, `coalType`, `amount`, `transportation`, `deliveryPlace`, `clearing`, `acceptance`, `payment`, `isPayDeposit`, `price`, `qnetar`, `start`, `m`, `rba`, `lrbvc`, `hrbvc`, `mad`, `stad`, `ladbv`, `hadbv`, `qgrd`, `std`, `ldwgbv`, `hdwgbv`, `granularity`, `ST`, `HG`, `comment`, `status`) VALUES (1, '欧利供应链公司', '1007', '张三', '欧利供应链公司', '2021-08-05 09:58:41', '2021-08-12 09:58:48', '2021-08-17 09:59:26', '新型煤', 100, '海运', '江西', '现结', '现金', '现金', 1, 50000, 1500, 0.2, 5, 0.4, 0.1, 0.3, 0.3, 30, 0.05, 0.34, 0.3, 0.6, 0.3, 0.39, 300, 900, 450, '量大急求！', 2);
-INSERT INTO `list`(`identity`, `cpnName`, `no`, `proposer`, `signer`, `startTime`, `shipStartTime`, `shipEndTime`, `coalType`, `amount`, `transportation`, `deliveryPlace`, `clearing`, `acceptance`, `payment`, `isPayDeposit`, `price`, `qnetar`, `start`, `m`, `rba`, `lrbvc`, `hrbvc`, `mad`, `stad`, `ladbv`, `hadbv`, `qgrd`, `std`, `ldwgbv`, `hdwgbv`, `granularity`, `ST`, `HG`, `comment`, `status`) VALUES (1, '中天供应链公司', '11', '张三', '中天供应链公司', '2021-08-05 09:58:41', '2021-08-12 09:58:48', '2021-08-17 09:59:26', '新型煤', 100, '海运', '江西', '现结', '现金', '现金', 1, 50000, 6600, 0.2, 10, 0.4, 0.1, 0.3, 0.3, 35, 0.05, 0.34, 0.3, 0.6, 0.3, 0.39, 300, 900, 450, '量大急求！', 2);
-INSERT INTO `list`(`identity`, `cpnName`, `no`, `proposer`, `signer`, `startTime`, `shipStartTime`, `shipEndTime`, `coalType`, `amount`, `transportation`, `deliveryPlace`, `clearing`, `acceptance`, `payment`, `isPayDeposit`, `price`, `qnetar`, `start`, `m`, `rba`, `lrbvc`, `hrbvc`, `mad`, `stad`, `ladbv`, `hadbv`, `qgrd`, `std`, `ldwgbv`, `hdwgbv`, `granularity`, `ST`, `HG`, `comment`, `status`) VALUES (1, '永盛化工公司', '112', '张三', '永盛化工公司', '2021-08-05 09:58:41', '2021-08-12 09:58:48', '2021-08-17 09:59:26', '新型煤', 100, '海运', '贵州', '现结', '现金', '现金', 1, 50000, 3500, 0.2, 4, 0.4, 0.1, 0.3, 0.3, 27, 0.05, 0.34, 0.3, 0.6, 0.3, 0.39, 300, 900, 450, '量大急求！', 2);
-INSERT INTO `list`(`identity`, `cpnName`, `no`, `proposer`, `signer`, `startTime`, `shipStartTime`, `shipEndTime`, `coalType`, `amount`, `transportation`, `deliveryPlace`, `clearing`, `acceptance`, `payment`, `isPayDeposit`, `price`, `qnetar`, `start`, `m`, `rba`, `lrbvc`, `hrbvc`, `mad`, `stad`, `ladbv`, `hadbv`, `qgrd`, `std`, `ldwgbv`, `hdwgbv`, `granularity`, `ST`, `HG`, `comment`, `status`) VALUES (1, '永盛化工公司', '1127', '张三', '永盛化工公司', '2021-08-05 09:58:41', '2021-08-12 09:58:48', '2021-08-17 09:59:26', '新型煤', 100, '海运', '贵州', '现结', '现金', '现金', 1, 50000, 3500, 0.2, 4, 0.4, 0.1, 0.3, 0.3, 27, 0.05, 0.34, 0.3, 0.6, 0.3, 0.39, 300, 900, 450, '量大急求！', 2);
-INSERT INTO `list`(`identity`, `cpnName`, `no`, `proposer`, `signer`, `startTime`, `shipStartTime`, `shipEndTime`, `coalType`, `amount`, `transportation`, `deliveryPlace`, `clearing`, `acceptance`, `payment`, `isPayDeposit`, `price`, `qnetar`, `start`, `m`, `rba`, `lrbvc`, `hrbvc`, `mad`, `stad`, `ladbv`, `hadbv`, `qgrd`, `std`, `ldwgbv`, `hdwgbv`, `granularity`, `ST`, `HG`, `comment`, `status`) VALUES (1, '欧利供应链公司', '117', '张三', '欧利供应链公司', '2021-08-05 09:58:41', '2021-08-12 09:58:48', '2021-08-17 09:59:26', '水煤浆', 100, '海运', '贵州', '现结', '现金', '现金', 1, 50000, 6600, 0.2, 10, 0.4, 0.1, 0.3, 0.3, 35, 0.05, 0.34, 0.3, 0.6, 0.3, 0.39, 300, 900, 450, '量大急求！', 2);
-INSERT INTO `list`(`identity`, `cpnName`, `no`, `proposer`, `signer`, `startTime`, `shipStartTime`, `shipEndTime`, `coalType`, `amount`, `transportation`, `deliveryPlace`, `clearing`, `acceptance`, `payment`, `isPayDeposit`, `price`, `qnetar`, `start`, `m`, `rba`, `lrbvc`, `hrbvc`, `mad`, `stad`, `ladbv`, `hadbv`, `qgrd`, `std`, `ldwgbv`, `hdwgbv`, `granularity`, `ST`, `HG`, `comment`, `status`) VALUES (1, '舒雅工程公司', '13', '张三', '舒雅工程公司', '2021-08-05 09:58:41', '2021-08-12 09:58:48', '2021-08-17 09:59:26', '动力煤', 100, '海运', '贵州', '现结', '现金', '现金', 1, 50000, 3400, 0.2, 3, 0.4, 0.1, 0.3, 0.3, 10, 0.05, 0.34, 0.3, 0.6, 0.3, 0.39, 300, 900, 450, '量大急求！', 2);
-INSERT INTO `list`(`identity`, `cpnName`, `no`, `proposer`, `signer`, `startTime`, `shipStartTime`, `shipEndTime`, `coalType`, `amount`, `transportation`, `deliveryPlace`, `clearing`, `acceptance`, `payment`, `isPayDeposit`, `price`, `qnetar`, `start`, `m`, `rba`, `lrbvc`, `hrbvc`, `mad`, `stad`, `ladbv`, `hadbv`, `qgrd`, `std`, `ldwgbv`, `hdwgbv`, `granularity`, `ST`, `HG`, `comment`, `status`) VALUES (1, '永盛化工公司', '137', '张三', '永盛化工公司', '2021-08-05 09:58:41', '2021-08-12 09:58:48', '2021-08-17 09:59:26', '水煤浆', 100, '海运', '贵州', '现结', '现金', '现金', 1, 50000, 3400, 0.2, 3, 0.4, 0.1, 0.3, 0.3, 10, 0.05, 0.34, 0.3, 0.6, 0.3, 0.39, 300, 900, 450, '量大急求！', 2);
-INSERT INTO `list`(`identity`, `cpnName`, `no`, `proposer`, `signer`, `startTime`, `shipStartTime`, `shipEndTime`, `coalType`, `amount`, `transportation`, `deliveryPlace`, `clearing`, `acceptance`, `payment`, `isPayDeposit`, `price`, `qnetar`, `start`, `m`, `rba`, `lrbvc`, `hrbvc`, `mad`, `stad`, `ladbv`, `hadbv`, `qgrd`, `std`, `ldwgbv`, `hdwgbv`, `granularity`, `ST`, `HG`, `comment`, `status`) VALUES (0, '舒雅工程公司', '14', '张三', '舒雅工程公司', '2021-08-05 09:58:41', '2021-08-12 09:58:48', '2021-08-17 09:59:26', '水煤浆', 100, '海运', '贵州', '现结', '现金', '现金', 1, 50000, 3300, 0.2, 11, 0.4, 0.1, 0.3, 0.3, 10, 0.05, 0.34, 0.3, 0.6, 0.3, 0.39, 300, 900, 450, '量大急求！', 2);
-INSERT INTO `list`(`identity`, `cpnName`, `no`, `proposer`, `signer`, `startTime`, `shipStartTime`, `shipEndTime`, `coalType`, `amount`, `transportation`, `deliveryPlace`, `clearing`, `acceptance`, `payment`, `isPayDeposit`, `price`, `qnetar`, `start`, `m`, `rba`, `lrbvc`, `hrbvc`, `mad`, `stad`, `ladbv`, `hadbv`, `qgrd`, `std`, `ldwgbv`, `hdwgbv`, `granularity`, `ST`, `HG`, `comment`, `status`) VALUES (0, '永盛化工公司', '1477', '张三', '永盛化工公司', '2021-08-05 09:58:41', '2021-08-12 09:58:48', '2021-08-17 09:59:26', '水煤浆', 100, '海运', '江西', '现结', '现金', '现金', 1, 50000, 3300, 0.2, 11, 0.4, 0.1, 0.3, 0.3, 10, 0.05, 0.34, 0.3, 0.6, 0.3, 0.39, 300, 900, 450, '量大急求！', 2);
-INSERT INTO `list`(`identity`, `cpnName`, `no`, `proposer`, `signer`, `startTime`, `shipStartTime`, `shipEndTime`, `coalType`, `amount`, `transportation`, `deliveryPlace`, `clearing`, `acceptance`, `payment`, `isPayDeposit`, `price`, `qnetar`, `start`, `m`, `rba`, `lrbvc`, `hrbvc`, `mad`, `stad`, `ladbv`, `hadbv`, `qgrd`, `std`, `ldwgbv`, `hdwgbv`, `granularity`, `ST`, `HG`, `comment`, `status`) VALUES (0, '舒雅工程公司', '18', '张三', '舒雅工程公司', '2021-08-05 09:58:41', '2021-08-12 09:58:48', '2021-08-17 09:59:26', '水煤浆', 100, '海运', '陕西', '现结', '现金', '现金', 1, 50000, 2000, 0.2, 14, 0.4, 0.1, 0.3, 0.3, 10, 0.05, 0.34, 0.3, 0.6, 0.3, 0.39, 300, 900, 450, '量大急求！', 2);
-INSERT INTO `list`(`identity`, `cpnName`, `no`, `proposer`, `signer`, `startTime`, `shipStartTime`, `shipEndTime`, `coalType`, `amount`, `transportation`, `deliveryPlace`, `clearing`, `acceptance`, `payment`, `isPayDeposit`, `price`, `qnetar`, `start`, `m`, `rba`, `lrbvc`, `hrbvc`, `mad`, `stad`, `ladbv`, `hadbv`, `qgrd`, `std`, `ldwgbv`, `hdwgbv`, `granularity`, `ST`, `HG`, `comment`, `status`) VALUES (0, '合盛元化工公司', '1867', '张三', '合盛元化工公司', '2021-08-05 09:58:41', '2021-08-12 09:58:48', '2021-08-17 09:59:26', '新型煤', 100, '海运', '陕西', '现结', '现金', '现金', 1, 50000, 2000, 0.2, 14, 0.4, 0.1, 0.3, 0.3, 10, 0.05, 0.34, 0.3, 0.6, 0.3, 0.39, 300, 900, 450, '量大急求！', 2);
-INSERT INTO `list`(`identity`, `cpnName`, `no`, `proposer`, `signer`, `startTime`, `shipStartTime`, `shipEndTime`, `coalType`, `amount`, `transportation`, `deliveryPlace`, `clearing`, `acceptance`, `payment`, `isPayDeposit`, `price`, `qnetar`, `start`, `m`, `rba`, `lrbvc`, `hrbvc`, `mad`, `stad`, `ladbv`, `hadbv`, `qgrd`, `std`, `ldwgbv`, `hdwgbv`, `granularity`, `ST`, `HG`, `comment`, `status`) VALUES (0, '舒雅工程公司', '21', '张三', '舒雅工程公司', '2021-08-05 09:58:41', '2021-08-12 09:58:48', '2021-08-17 09:59:26', '动力煤', 100, '海运', '江西', '现结', '现金', '现金', 1, 50000, 4500, 0.2, 15, 0.4, 0.1, 0.3, 0.3, 40, 0.05, 0.34, 0.3, 0.6, 0.3, 0.39, 300, 900, 450, '量大急求！', 2);
-INSERT INTO `list`(`identity`, `cpnName`, `no`, `proposer`, `signer`, `startTime`, `shipStartTime`, `shipEndTime`, `coalType`, `amount`, `transportation`, `deliveryPlace`, `clearing`, `acceptance`, `payment`, `isPayDeposit`, `price`, `qnetar`, `start`, `m`, `rba`, `lrbvc`, `hrbvc`, `mad`, `stad`, `ladbv`, `hadbv`, `qgrd`, `std`, `ldwgbv`, `hdwgbv`, `granularity`, `ST`, `HG`, `comment`, `status`) VALUES (0, '合盛元化工公司', '2176', '张三', '合盛元化工公司', '2021-08-05 09:58:41', '2021-08-12 09:58:48', '2021-08-17 09:59:26', '动力煤', 100, '海运', '江西', '现结', '现金', '现金', 1, 50000, 4500, 0.2, 15, 0.4, 0.1, 0.3, 0.3, 40, 0.05, 0.34, 0.3, 0.6, 0.3, 0.39, 300, 900, 450, '量大急求！', 2);
-INSERT INTO `list`(`identity`, `cpnName`, `no`, `proposer`, `signer`, `startTime`, `shipStartTime`, `shipEndTime`, `coalType`, `amount`, `transportation`, `deliveryPlace`, `clearing`, `acceptance`, `payment`, `isPayDeposit`, `price`, `qnetar`, `start`, `m`, `rba`, `lrbvc`, `hrbvc`, `mad`, `stad`, `ladbv`, `hadbv`, `qgrd`, `std`, `ldwgbv`, `hdwgbv`, `granularity`, `ST`, `HG`, `comment`, `status`) VALUES (1, '永盛化工公司', '23', '张三', '永盛化工公司', '2021-08-05 09:58:41', '2021-08-12 09:58:48', '2021-08-17 09:59:26', '新型煤', 100, '海运', '江西', '现结', '现金', '现金', 1, 50000, 1200, 0.2, 15, 0.4, 0.1, 0.3, 0.3, 37, 0.05, 0.34, 0.3, 0.6, 0.3, 0.39, 300, 900, 450, '量大急求！', 2);
-INSERT INTO `list`(`identity`, `cpnName`, `no`, `proposer`, `signer`, `startTime`, `shipStartTime`, `shipEndTime`, `coalType`, `amount`, `transportation`, `deliveryPlace`, `clearing`, `acceptance`, `payment`, `isPayDeposit`, `price`, `qnetar`, `start`, `m`, `rba`, `lrbvc`, `hrbvc`, `mad`, `stad`, `ladbv`, `hadbv`, `qgrd`, `std`, `ldwgbv`, `hdwgbv`, `granularity`, `ST`, `HG`, `comment`, `status`) VALUES (1, '合盛元化工公司', '2356', '张三', '合盛元化工公司', '2021-08-05 09:58:41', '2021-08-12 09:58:48', '2021-08-17 09:59:26', '新型煤', 100, '海运', '四川', '现结', '现金', '现金', 1, 50000, 1200, 0.2, 15, 0.4, 0.1, 0.3, 0.3, 37, 0.05, 0.34, 0.3, 0.6, 0.3, 0.39, 300, 900, 450, '量大急求！', 2);
-INSERT INTO `list`(`identity`, `cpnName`, `no`, `proposer`, `signer`, `startTime`, `shipStartTime`, `shipEndTime`, `coalType`, `amount`, `transportation`, `deliveryPlace`, `clearing`, `acceptance`, `payment`, `isPayDeposit`, `price`, `qnetar`, `start`, `m`, `rba`, `lrbvc`, `hrbvc`, `mad`, `stad`, `ladbv`, `hadbv`, `qgrd`, `std`, `ldwgbv`, `hdwgbv`, `granularity`, `ST`, `HG`, `comment`, `status`) VALUES (1, '永盛化工公司', '24', '张三', '永盛化工公司', '2021-08-05 09:58:41', '2021-08-12 09:58:48', '2021-08-17 09:59:26', '新型煤', 100, '海运', '四川', '现结', '现金', '现金', 1, 50000, 2000, 0.2, 17, 0.4, 0.1, 0.3, 0.3, 16, 0.05, 0.34, 0.3, 0.6, 0.3, 0.39, 300, 900, 450, '量大急求！', 2);
-INSERT INTO `list`(`identity`, `cpnName`, `no`, `proposer`, `signer`, `startTime`, `shipStartTime`, `shipEndTime`, `coalType`, `amount`, `transportation`, `deliveryPlace`, `clearing`, `acceptance`, `payment`, `isPayDeposit`, `price`, `qnetar`, `start`, `m`, `rba`, `lrbvc`, `hrbvc`, `mad`, `stad`, `ladbv`, `hadbv`, `qgrd`, `std`, `ldwgbv`, `hdwgbv`, `granularity`, `ST`, `HG`, `comment`, `status`) VALUES (1, '鸿铭工程公司', '2456', '张三', '鸿铭工程公司', '2021-08-05 09:58:41', '2021-08-12 09:58:48', '2021-08-17 09:59:26', '煤泥', 100, '海运', '四川', '现结', '现金', '现金', 1, 50000, 2000, 0.2, 17, 0.4, 0.1, 0.3, 0.3, 16, 0.05, 0.34, 0.3, 0.6, 0.3, 0.39, 300, 900, 450, '量大急求！', 2);
-INSERT INTO `list`(`identity`, `cpnName`, `no`, `proposer`, `signer`, `startTime`, `shipStartTime`, `shipEndTime`, `coalType`, `amount`, `transportation`, `deliveryPlace`, `clearing`, `acceptance`, `payment`, `isPayDeposit`, `price`, `qnetar`, `start`, `m`, `rba`, `lrbvc`, `hrbvc`, `mad`, `stad`, `ladbv`, `hadbv`, `qgrd`, `std`, `ldwgbv`, `hdwgbv`, `granularity`, `ST`, `HG`, `comment`, `status`) VALUES (0, '瑞美时工程公司', '34', '张三', '瑞美时工程公司', '2021-08-05 09:58:41', '2021-08-12 09:58:48', '2021-08-17 09:59:26', '煤泥', 100, '海运', '四川', '现结', '现金', '现金', 1, 50000, 1700, 0.2, 20, 0.4, 0.1, 0.3, 0.3, 5, 0.05, 0.34, 0.3, 0.6, 0.3, 0.39, 300, 900, 450, '量大急求！', 2);
-INSERT INTO `list`(`identity`, `cpnName`, `no`, `proposer`, `signer`, `startTime`, `shipStartTime`, `shipEndTime`, `coalType`, `amount`, `transportation`, `deliveryPlace`, `clearing`, `acceptance`, `payment`, `isPayDeposit`, `price`, `qnetar`, `start`, `m`, `rba`, `lrbvc`, `hrbvc`, `mad`, `stad`, `ladbv`, `hadbv`, `qgrd`, `std`, `ldwgbv`, `hdwgbv`, `granularity`, `ST`, `HG`, `comment`, `status`) VALUES (1, '瑞美时工程公司', '342', '张三', '瑞美时工程公司', '2021-08-05 09:58:41', '2021-08-12 09:58:48', '2021-08-17 09:59:26', '新型煤', 100, '海运', '江西', '现结', '现金', '现金', 1, 50000, 2700, 0.2, 23, 0.4, 0.1, 0.3, 0.3, 10, 0.05, 0.34, 0.3, 0.6, 0.3, 0.39, 300, 900, 450, '量大急求！', 2);
-INSERT INTO `list`(`identity`, `cpnName`, `no`, `proposer`, `signer`, `startTime`, `shipStartTime`, `shipEndTime`, `coalType`, `amount`, `transportation`, `deliveryPlace`, `clearing`, `acceptance`, `payment`, `isPayDeposit`, `price`, `qnetar`, `start`, `m`, `rba`, `lrbvc`, `hrbvc`, `mad`, `stad`, `ladbv`, `hadbv`, `qgrd`, `std`, `ldwgbv`, `hdwgbv`, `granularity`, `ST`, `HG`, `comment`, `status`) VALUES (1, '鸿铭工程公司', '34276', '张三', '鸿铭工程公司', '2021-08-05 09:58:41', '2021-08-12 09:58:48', '2021-08-17 09:59:26', '水煤浆', 100, '海运', '江西', '现结', '现金', '现金', 1, 50000, 2700, 0.2, 23, 0.4, 0.1, 0.3, 0.3, 10, 0.05, 0.34, 0.3, 0.6, 0.3, 0.39, 300, 900, 450, '量大急求！', 2);
-INSERT INTO `list`(`identity`, `cpnName`, `no`, `proposer`, `signer`, `startTime`, `shipStartTime`, `shipEndTime`, `coalType`, `amount`, `transportation`, `deliveryPlace`, `clearing`, `acceptance`, `payment`, `isPayDeposit`, `price`, `qnetar`, `start`, `m`, `rba`, `lrbvc`, `hrbvc`, `mad`, `stad`, `ladbv`, `hadbv`, `qgrd`, `std`, `ldwgbv`, `hdwgbv`, `granularity`, `ST`, `HG`, `comment`, `status`) VALUES (0, '鸿铭工程公司', '3446', '张三', '鸿铭工程公司', '2021-08-05 09:58:41', '2021-08-12 09:58:48', '2021-08-17 09:59:26', '水煤浆', 100, '海运', '江西', '现结', '现金', '现金', 1, 50000, 1700, 0.2, 20, 0.4, 0.1, 0.3, 0.3, 5, 0.05, 0.34, 0.3, 0.6, 0.3, 0.39, 300, 900, 450, '量大急求！', 2);
-INSERT INTO `list`(`identity`, `cpnName`, `no`, `proposer`, `signer`, `startTime`, `shipStartTime`, `shipEndTime`, `coalType`, `amount`, `transportation`, `deliveryPlace`, `clearing`, `acceptance`, `payment`, `isPayDeposit`, `price`, `qnetar`, `start`, `m`, `rba`, `lrbvc`, `hrbvc`, `mad`, `stad`, `ladbv`, `hadbv`, `qgrd`, `std`, `ldwgbv`, `hdwgbv`, `granularity`, `ST`, `HG`, `comment`, `status`) VALUES (1, '瑞美时工程公司', '35', '张三', '瑞美时工程公司', '2021-08-05 09:58:41', '2021-08-12 09:58:48', '2021-08-17 09:59:26', '水煤浆', 100, '海运', '海南', '现结', '现金', '现金', 1, 50000, 3100, 0.2, 30, 0.4, 0.1, 0.3, 0.3, 4, 0.05, 0.34, 0.3, 0.6, 0.3, 0.39, 300, 900, 450, '量大急求！', 2);
-INSERT INTO `list`(`identity`, `cpnName`, `no`, `proposer`, `signer`, `startTime`, `shipStartTime`, `shipEndTime`, `coalType`, `amount`, `transportation`, `deliveryPlace`, `clearing`, `acceptance`, `payment`, `isPayDeposit`, `price`, `qnetar`, `start`, `m`, `rba`, `lrbvc`, `hrbvc`, `mad`, `stad`, `ladbv`, `hadbv`, `qgrd`, `std`, `ldwgbv`, `hdwgbv`, `granularity`, `ST`, `HG`, `comment`, `status`) VALUES (1, '合盛元化工公司', '3579', '张三', '合盛元化工公司', '2021-08-05 09:58:41', '2021-08-12 09:58:48', '2021-08-17 09:59:26', '新型煤', 100, '海运', '海南', '现结', '现金', '现金', 1, 50000, 3100, 0.2, 30, 0.4, 0.1, 0.3, 0.3, 4, 0.05, 0.34, 0.3, 0.6, 0.3, 0.39, 300, 900, 450, '量大急求！', 2);
-INSERT INTO `list`(`identity`, `cpnName`, `no`, `proposer`, `signer`, `startTime`, `shipStartTime`, `shipEndTime`, `coalType`, `amount`, `transportation`, `deliveryPlace`, `clearing`, `acceptance`, `payment`, `isPayDeposit`, `price`, `qnetar`, `start`, `m`, `rba`, `lrbvc`, `hrbvc`, `mad`, `stad`, `ladbv`, `hadbv`, `qgrd`, `std`, `ldwgbv`, `hdwgbv`, `granularity`, `ST`, `HG`, `comment`, `status`) VALUES (1, '永盛化工公司', '45', '张三', '永盛化工公司', '2021-08-05 09:58:41', '2021-08-12 09:58:48', '2021-08-17 09:59:26', '新型煤', 100, '海运', '海南', '现结', '现金', '现金', 1, 50000, 3600, 0.2, 35, 0.4, 0.1, 0.3, 0.3, 3, 0.05, 0.34, 0.3, 0.6, 0.3, 0.39, 300, 900, 450, '量大急求！', 2);
-INSERT INTO `list`(`identity`, `cpnName`, `no`, `proposer`, `signer`, `startTime`, `shipStartTime`, `shipEndTime`, `coalType`, `amount`, `transportation`, `deliveryPlace`, `clearing`, `acceptance`, `payment`, `isPayDeposit`, `price`, `qnetar`, `start`, `m`, `rba`, `lrbvc`, `hrbvc`, `mad`, `stad`, `ladbv`, `hadbv`, `qgrd`, `std`, `ldwgbv`, `hdwgbv`, `granularity`, `ST`, `HG`, `comment`, `status`) VALUES (1, '合盛元化工公司', '4589', '张三', '合盛元化工公司', '2021-08-05 09:58:41', '2021-08-12 09:58:48', '2021-08-17 09:59:26', '无烟煤', 100, '海运', '江西', '现结', '现金', '现金', 1, 50000, 3600, 0.2, 35, 0.4, 0.1, 0.3, 0.3, 3, 0.05, 0.34, 0.3, 0.6, 0.3, 0.39, 300, 900, 450, '量大急求！', 2);
-INSERT INTO `list`(`identity`, `cpnName`, `no`, `proposer`, `signer`, `startTime`, `shipStartTime`, `shipEndTime`, `coalType`, `amount`, `transportation`, `deliveryPlace`, `clearing`, `acceptance`, `payment`, `isPayDeposit`, `price`, `qnetar`, `start`, `m`, `rba`, `lrbvc`, `hrbvc`, `mad`, `stad`, `ladbv`, `hadbv`, `qgrd`, `std`, `ldwgbv`, `hdwgbv`, `granularity`, `ST`, `HG`, `comment`, `status`) VALUES (1, '永盛化工公司', '56', '张三', '永盛化工公司', '2021-08-05 09:58:41', '2021-08-12 09:58:48', '2021-08-17 09:59:26', '无烟煤', 100, '海运', '江西', '现结', '现金', '现金', 1, 50000, 3300, 0.2, 27, 0.4, 0.1, 0.3, 0.3, 11, 0.05, 0.34, 0.3, 0.6, 0.3, 0.39, 300, 900, 450, '量大急求！', 2);
-INSERT INTO `list`(`identity`, `cpnName`, `no`, `proposer`, `signer`, `startTime`, `shipStartTime`, `shipEndTime`, `coalType`, `amount`, `transportation`, `deliveryPlace`, `clearing`, `acceptance`, `payment`, `isPayDeposit`, `price`, `qnetar`, `start`, `m`, `rba`, `lrbvc`, `hrbvc`, `mad`, `stad`, `ladbv`, `hadbv`, `qgrd`, `std`, `ldwgbv`, `hdwgbv`, `granularity`, `ST`, `HG`, `comment`, `status`) VALUES (1, '合盛元化工公司', '568', '张三', '合盛元化工公司', '2021-08-05 09:58:41', '2021-08-12 09:58:48', '2021-08-17 09:59:26', '无烟煤', 100, '海运', '江西', '现结', '现金', '现金', 1, 50000, 3300, 0.2, 27, 0.4, 0.1, 0.3, 0.3, 11, 0.05, 0.34, 0.3, 0.6, 0.3, 0.39, 300, 900, 450, '量大急求！', 2);
-INSERT INTO `list`(`identity`, `cpnName`, `no`, `proposer`, `signer`, `startTime`, `shipStartTime`, `shipEndTime`, `coalType`, `amount`, `transportation`, `deliveryPlace`, `clearing`, `acceptance`, `payment`, `isPayDeposit`, `price`, `qnetar`, `start`, `m`, `rba`, `lrbvc`, `hrbvc`, `mad`, `stad`, `ladbv`, `hadbv`, `qgrd`, `std`, `ldwgbv`, `hdwgbv`, `granularity`, `ST`, `HG`, `comment`, `status`) VALUES (0, '桂华供应链公司', '67', '张三', '桂华供应链公司', '2021-08-05 09:58:41', '2021-08-12 09:58:48', '2021-08-17 09:59:26', '无烟煤', 100, '海运', '江西', '现结', '现金', '现金', 1, 50000, 2000, 0.2, 10, 0.4, 0.1, 0.3, 0.3, 10, 0.05, 0.34, 0.3, 0.6, 0.3, 0.39, 300, 900, 450, '量大急求！', 2);
-INSERT INTO `list`(`identity`, `cpnName`, `no`, `proposer`, `signer`, `startTime`, `shipStartTime`, `shipEndTime`, `coalType`, `amount`, `transportation`, `deliveryPlace`, `clearing`, `acceptance`, `payment`, `isPayDeposit`, `price`, `qnetar`, `start`, `m`, `rba`, `lrbvc`, `hrbvc`, `mad`, `stad`, `ladbv`, `hadbv`, `qgrd`, `std`, `ldwgbv`, `hdwgbv`, `granularity`, `ST`, `HG`, `comment`, `status`) VALUES (0, '合盛元化工公司', '6778', '张三', '合盛元化工公司', '2021-08-05 09:58:41', '2021-08-12 09:58:48', '2021-08-17 09:59:26', '新型煤', 100, '海运', '安徽', '现结', '现金', '现金', 1, 50000, 2000, 0.2, 10, 0.4, 0.1, 0.3, 0.3, 10, 0.05, 0.34, 0.3, 0.6, 0.3, 0.39, 300, 900, 450, '量大急求！', 2);
-INSERT INTO `list`(`identity`, `cpnName`, `no`, `proposer`, `signer`, `startTime`, `shipStartTime`, `shipEndTime`, `coalType`, `amount`, `transportation`, `deliveryPlace`, `clearing`, `acceptance`, `payment`, `isPayDeposit`, `price`, `qnetar`, `start`, `m`, `rba`, `lrbvc`, `hrbvc`, `mad`, `stad`, `ladbv`, `hadbv`, `qgrd`, `std`, `ldwgbv`, `hdwgbv`, `granularity`, `ST`, `HG`, `comment`, `status`) VALUES (1, '桂华供应链公司', '68', '张三', '桂华供应链公司', '2021-08-05 09:58:41', '2021-08-12 09:58:48', '2021-08-17 09:59:26', '新型煤', 100, '海运', '安徽', '现结', '现金', '现金', 1, 50000, 4500, 0.2, 10, 0.4, 0.1, 0.3, 0.3, 4, 0.05, 0.34, 0.3, 0.6, 0.3, 0.39, 300, 900, 450, '量大急求！', 2);
-INSERT INTO `list`(`identity`, `cpnName`, `no`, `proposer`, `signer`, `startTime`, `shipStartTime`, `shipEndTime`, `coalType`, `amount`, `transportation`, `deliveryPlace`, `clearing`, `acceptance`, `payment`, `isPayDeposit`, `price`, `qnetar`, `start`, `m`, `rba`, `lrbvc`, `hrbvc`, `mad`, `stad`, `ladbv`, `hadbv`, `qgrd`, `std`, `ldwgbv`, `hdwgbv`, `granularity`, `ST`, `HG`, `comment`, `status`) VALUES (1, '永盛化工公司', '687', '张三', '永盛化工公司', '2021-08-05 09:58:41', '2021-08-12 09:58:48', '2021-08-17 09:59:26', '炼焦媒', 100, '海运', '江西', '现结', '现金', '现金', 1, 50000, 4500, 0.2, 10, 0.4, 0.1, 0.3, 0.3, 4, 0.05, 0.34, 0.3, 0.6, 0.3, 0.39, 300, 900, 450, '量大急求！', 2);
-INSERT INTO `list`(`identity`, `cpnName`, `no`, `proposer`, `signer`, `startTime`, `shipStartTime`, `shipEndTime`, `coalType`, `amount`, `transportation`, `deliveryPlace`, `clearing`, `acceptance`, `payment`, `isPayDeposit`, `price`, `qnetar`, `start`, `m`, `rba`, `lrbvc`, `hrbvc`, `mad`, `stad`, `ladbv`, `hadbv`, `qgrd`, `std`, `ldwgbv`, `hdwgbv`, `granularity`, `ST`, `HG`, `comment`, `status`) VALUES (1, '永盛化工公司', '69', '张三', '永盛化工公司', '2021-08-05 09:58:41', '2021-08-12 09:58:48', '2021-08-17 09:59:26', '无烟煤', 100, '海运', '江西', '现结', '现金', '现金', 1, 50000, 1200, 0.2, 10, 0.4, 0.1, 0.3, 0.3, 3, 0.05, 0.34, 0.3, 0.6, 0.3, 0.39, 300, 900, 450, '量大急求！', 2);
-INSERT INTO `list`(`identity`, `cpnName`, `no`, `proposer`, `signer`, `startTime`, `shipStartTime`, `shipEndTime`, `coalType`, `amount`, `transportation`, `deliveryPlace`, `clearing`, `acceptance`, `payment`, `isPayDeposit`, `price`, `qnetar`, `start`, `m`, `rba`, `lrbvc`, `hrbvc`, `mad`, `stad`, `ladbv`, `hadbv`, `qgrd`, `std`, `ldwgbv`, `hdwgbv`, `granularity`, `ST`, `HG`, `comment`, `status`) VALUES (1, '永盛化工公司', '6945', '张三', '永盛化工公司', '2021-08-05 09:58:41', '2021-08-12 09:58:48', '2021-08-17 09:59:26', '无烟煤', 100, '海运', '江西', '现结', '现金', '现金', 1, 50000, 1200, 0.2, 10, 0.4, 0.1, 0.3, 0.3, 3, 0.05, 0.34, 0.3, 0.6, 0.3, 0.39, 300, 900, 450, '量大急求！', 2);
-INSERT INTO `list`(`identity`, `cpnName`, `no`, `proposer`, `signer`, `startTime`, `shipStartTime`, `shipEndTime`, `coalType`, `amount`, `transportation`, `deliveryPlace`, `clearing`, `acceptance`, `payment`, `isPayDeposit`, `price`, `qnetar`, `start`, `m`, `rba`, `lrbvc`, `hrbvc`, `mad`, `stad`, `ladbv`, `hadbv`, `qgrd`, `std`, `ldwgbv`, `hdwgbv`, `granularity`, `ST`, `HG`, `comment`, `status`) VALUES (1, '永盛化工公司', '87', '张三', '永盛化工公司', '2021-08-05 09:58:41', '2021-08-12 09:58:48', '2021-08-17 09:59:26', '炼焦媒', 100, '海运', '内蒙古自治区', '现结', '现金', '现金', 1, 50000, 2000, 0.2, 10, 0.4, 0.1, 0.3, 0.3, 11, 0.05, 0.34, 0.3, 0.6, 0.3, 0.39, 300, 900, 450, '量大急求！', 2);
-INSERT INTO `list`(`identity`, `cpnName`, `no`, `proposer`, `signer`, `startTime`, `shipStartTime`, `shipEndTime`, `coalType`, `amount`, `transportation`, `deliveryPlace`, `clearing`, `acceptance`, `payment`, `isPayDeposit`, `price`, `qnetar`, `start`, `m`, `rba`, `lrbvc`, `hrbvc`, `mad`, `stad`, `ladbv`, `hadbv`, `qgrd`, `std`, `ldwgbv`, `hdwgbv`, `granularity`, `ST`, `HG`, `comment`, `status`) VALUES (1, '永盛化工公司', '8745', '张三', '永盛化工公司', '2021-08-05 09:58:41', '2021-08-12 09:58:48', '2021-08-17 09:59:26', '炼焦媒', 100, '海运', '内蒙古自治区', '现结', '现金', '现金', 1, 50000, 2000, 0.2, 10, 0.4, 0.1, 0.3, 0.3, 11, 0.05, 0.34, 0.3, 0.6, 0.3, 0.39, 300, 900, 450, '量大急求！', 2);
-INSERT INTO `list`(`identity`, `cpnName`, `no`, `proposer`, `signer`, `startTime`, `shipStartTime`, `shipEndTime`, `coalType`, `amount`, `transportation`, `deliveryPlace`, `clearing`, `acceptance`, `payment`, `isPayDeposit`, `price`, `qnetar`, `start`, `m`, `rba`, `lrbvc`, `hrbvc`, `mad`, `stad`, `ladbv`, `hadbv`, `qgrd`, `std`, `ldwgbv`, `hdwgbv`, `granularity`, `ST`, `HG`, `comment`, `status`) VALUES (0, '中天供应链公司', '89', '张三', '中天供应链公司', '2021-08-05 09:58:41', '2021-08-12 09:58:48', '2021-08-17 09:59:26', '炼焦媒', 100, '海运', '内蒙古自治区', '现结', '现金', '现金', 1, 50000, 1700, 0.2, 16, 0.4, 0.1, 0.3, 0.3, 5, 0.05, 0.34, 0.3, 0.6, 0.3, 0.39, 300, 900, 450, '量大急求！', 2);
-INSERT INTO `list`(`identity`, `cpnName`, `no`, `proposer`, `signer`, `startTime`, `shipStartTime`, `shipEndTime`, `coalType`, `amount`, `transportation`, `deliveryPlace`, `clearing`, `acceptance`, `payment`, `isPayDeposit`, `price`, `qnetar`, `start`, `m`, `rba`, `lrbvc`, `hrbvc`, `mad`, `stad`, `ladbv`, `hadbv`, `qgrd`, `std`, `ldwgbv`, `hdwgbv`, `granularity`, `ST`, `HG`, `comment`, `status`) VALUES (0, '贝世工程公司', '8945', '张三', '贝世工程公司', '2021-08-05 09:58:41', '2021-08-12 09:58:48', '2021-08-17 09:59:26', '炼焦媒', 100, '海运', '内蒙古自治区', '现结', '现金', '现金', 1, 50000, 1700, 0.2, 16, 0.4, 0.1, 0.3, 0.3, 5, 0.05, 0.34, 0.3, 0.6, 0.3, 0.39, 300, 900, 450, '量大急求！', 2);
-INSERT INTO `list`(`identity`, `cpnName`, `no`, `proposer`, `signer`, `startTime`, `shipStartTime`, `shipEndTime`, `coalType`, `amount`, `transportation`, `deliveryPlace`, `clearing`, `acceptance`, `payment`, `isPayDeposit`, `price`, `qnetar`, `start`, `m`, `rba`, `lrbvc`, `hrbvc`, `mad`, `stad`, `ladbv`, `hadbv`, `qgrd`, `std`, `ldwgbv`, `hdwgbv`, `granularity`, `ST`, `HG`, `comment`, `status`) VALUES (1, '天昊化工公司', '90', '张三', '天昊化工公司', '2021-08-05 09:58:41', '2021-08-12 09:58:48', '2021-08-17 09:59:26', '煤泥', 100, '海运', '内蒙古自治区', '现结', '现金', '现金', 1, 50000, 8000, 0.2, 16, 0.4, 0.1, 0.3, 0.3, 14, 0.05, 0.34, 0.3, 0.6, 0.3, 0.39, 300, 900, 450, '量大急求！', 2);
-INSERT INTO `list`(`identity`, `cpnName`, `no`, `proposer`, `signer`, `startTime`, `shipStartTime`, `shipEndTime`, `coalType`, `amount`, `transportation`, `deliveryPlace`, `clearing`, `acceptance`, `payment`, `isPayDeposit`, `price`, `qnetar`, `start`, `m`, `rba`, `lrbvc`, `hrbvc`, `mad`, `stad`, `ladbv`, `hadbv`, `qgrd`, `std`, `ldwgbv`, `hdwgbv`, `granularity`, `ST`, `HG`, `comment`, `status`) VALUES (1, '贝世工程公司', '9045', '张三', '贝世工程公司', '2021-08-05 09:58:41', '2021-08-12 09:58:48', '2021-08-17 09:59:26', '炼焦媒', 100, '海运', '内蒙古自治区', '现结', '现金', '现金', 1, 50000, 8000, 0.2, 16, 0.4, 0.1, 0.3, 0.3, 14, 0.05, 0.34, 0.3, 0.6, 0.3, 0.39, 300, 900, 450, '量大急求！', 2);
-INSERT INTO `list`(`identity`, `cpnName`, `no`, `proposer`, `signer`, `startTime`, `shipStartTime`, `shipEndTime`, `coalType`, `amount`, `transportation`, `deliveryPlace`, `clearing`, `acceptance`, `payment`, `isPayDeposit`, `price`, `qnetar`, `start`, `m`, `rba`, `lrbvc`, `hrbvc`, `mad`, `stad`, `ladbv`, `hadbv`, `qgrd`, `std`, `ldwgbv`, `hdwgbv`, `granularity`, `ST`, `HG`, `comment`, `status`) VALUES (1, '天昊化工公司', '91', '张三', '天昊化工公司', '2021-08-05 09:58:41', '2021-08-12 09:58:48', '2021-08-17 09:59:26', '新型煤', 100, '海运', '江西', '现结', '现金', '现金', 1, 50000, 7000, 0.2, 16, 0.4, 0.1, 0.3, 0.3, 4, 0.05, 0.34, 0.3, 0.6, 0.3, 0.39, 300, 900, 450, '量大急求！', 2);
-INSERT INTO `list`(`identity`, `cpnName`, `no`, `proposer`, `signer`, `startTime`, `shipStartTime`, `shipEndTime`, `coalType`, `amount`, `transportation`, `deliveryPlace`, `clearing`, `acceptance`, `payment`, `isPayDeposit`, `price`, `qnetar`, `start`, `m`, `rba`, `lrbvc`, `hrbvc`, `mad`, `stad`, `ladbv`, `hadbv`, `qgrd`, `std`, `ldwgbv`, `hdwgbv`, `granularity`, `ST`, `HG`, `comment`, `status`) VALUES (1, '贝世工程公司', '9145', '张三', '贝世工程公司', '2021-08-05 09:58:41', '2021-08-12 09:58:48', '2021-08-17 09:59:26', '新型煤', 100, '海运', '江西', '现结', '现金', '现金', 1, 50000, 7000, 0.2, 16, 0.4, 0.1, 0.3, 0.3, 4, 0.05, 0.34, 0.3, 0.6, 0.3, 0.39, 300, 900, 450, '量大急求！', 2);
-INSERT INTO `list`(`identity`, `cpnName`, `no`, `proposer`, `signer`, `startTime`, `shipStartTime`, `shipEndTime`, `coalType`, `amount`, `transportation`, `deliveryPlace`, `clearing`, `acceptance`, `payment`, `isPayDeposit`, `price`, `qnetar`, `start`, `m`, `rba`, `lrbvc`, `hrbvc`, `mad`, `stad`, `ladbv`, `hadbv`, `qgrd`, `std`, `ldwgbv`, `hdwgbv`, `granularity`, `ST`, `HG`, `comment`, `status`) VALUES (0, '天昊化工公司', '92', '张三', '天昊化工公司', '2021-08-05 09:58:41', '2021-08-12 09:58:48', '2021-08-17 09:59:26', '低质煤', 100, '海运', '江西', '现结', '现金', '现金', 1, 50000, 4400, 0.2, 9, 0.4, 0.1, 0.3, 0.3, 3, 0.05, 0.34, 0.3, 0.6, 0.3, 0.39, 300, 900, 450, '量大急求！', 2);
-INSERT INTO `list`(`identity`, `cpnName`, `no`, `proposer`, `signer`, `startTime`, `shipStartTime`, `shipEndTime`, `coalType`, `amount`, `transportation`, `deliveryPlace`, `clearing`, `acceptance`, `payment`, `isPayDeposit`, `price`, `qnetar`, `start`, `m`, `rba`, `lrbvc`, `hrbvc`, `mad`, `stad`, `ladbv`, `hadbv`, `qgrd`, `std`, `ldwgbv`, `hdwgbv`, `granularity`, `ST`, `HG`, `comment`, `status`) VALUES (0, '永盛化工公司', '9234', '张三', '永盛化工公司', '2021-08-05 09:58:41', '2021-08-12 09:58:48', '2021-08-17 09:59:26', '低质煤', 100, '海运', '长春', '现结', '现金', '现金', 1, 50000, 4400, 0.2, 9, 0.4, 0.1, 0.3, 0.3, 3, 0.05, 0.34, 0.3, 0.6, 0.3, 0.39, 300, 900, 450, '量大急求！', 2);
-INSERT INTO `list`(`identity`, `cpnName`, `no`, `proposer`, `signer`, `startTime`, `shipStartTime`, `shipEndTime`, `coalType`, `amount`, `transportation`, `deliveryPlace`, `clearing`, `acceptance`, `payment`, `isPayDeposit`, `price`, `qnetar`, `start`, `m`, `rba`, `lrbvc`, `hrbvc`, `mad`, `stad`, `ladbv`, `hadbv`, `qgrd`, `std`, `ldwgbv`, `hdwgbv`, `granularity`, `ST`, `HG`, `comment`, `status`) VALUES (0, '坤鑫供应链公司', '9711', '张三', '坤鑫供应链公司', '2021-08-05 09:58:41', '2021-08-12 09:58:48', '2021-08-17 09:59:26', '动力煤', 100, '海运', '长春', '现结', '现金', '现金', 1, 50000, 2500, 0.2, 20, 0.4, 0.1, 0.3, 0.3, 23, 0.05, 0.34, 0.3, 0.6, 0.3, 0.39, 300, 900, 450, '量大急求！', 2);
-INSERT INTO `list`(`identity`, `cpnName`, `no`, `proposer`, `signer`, `startTime`, `shipStartTime`, `shipEndTime`, `coalType`, `amount`, `transportation`, `deliveryPlace`, `clearing`, `acceptance`, `payment`, `isPayDeposit`, `price`, `qnetar`, `start`, `m`, `rba`, `lrbvc`, `hrbvc`, `mad`, `stad`, `ladbv`, `hadbv`, `qgrd`, `std`, `ldwgbv`, `hdwgbv`, `granularity`, `ST`, `HG`, `comment`, `status`) VALUES (1, '欧利供应链公司', '9712', '张三', '欧利供应链公司', '2021-08-05 09:58:41', '2021-08-12 09:58:48', '2021-08-17 09:59:26', '新型煤', 100, '海运', '长春', '现结', '现金', '现金', 1, 50000, 3900, 0.2, 9, 0.4, 0.1, 0.3, 0.3, 11, 0.05, 0.34, 0.3, 0.6, 0.3, 0.39, 300, 900, 450, '量大急求！', 2);
-INSERT INTO `list`(`identity`, `cpnName`, `no`, `proposer`, `signer`, `startTime`, `shipStartTime`, `shipEndTime`, `coalType`, `amount`, `transportation`, `deliveryPlace`, `clearing`, `acceptance`, `payment`, `isPayDeposit`, `price`, `qnetar`, `start`, `m`, `rba`, `lrbvc`, `hrbvc`, `mad`, `stad`, `ladbv`, `hadbv`, `qgrd`, `std`, `ldwgbv`, `hdwgbv`, `granularity`, `ST`, `HG`, `comment`, `status`) VALUES (1, '永盛化工公司', '973', '张三', '永盛化工公司', '2021-08-05 09:58:41', '2021-08-12 09:58:48', '2021-08-17 09:59:26', '新型煤', 100, '海运', '江西', '现结', '现金', '现金', 1, 50000, 3900, 0.2, 9, 0.4, 0.1, 0.3, 0.3, 11, 0.05, 0.34, 0.3, 0.6, 0.3, 0.39, 300, 900, 450, '量大急求！', 2);
+INSERT INTO `list` VALUES (0, 'string', 0, 0, 'string', '2021-08-14 08:34:59', '2021-08-14 08:34:59', '2021-08-14 08:34:59', 'string', 0, 'string', 'string', 'string', 'string', 'string', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'string', 0);
+INSERT INTO `list` VALUES (0, '日翔化工公司', 1, 1, '日翔化工公司', '2021-08-05 09:58:41', '2021-08-15 17:36:08', '2021-08-15 17:36:08', '动力煤', 100, '海运', '江西', '现结', '现金', '现金', 1, 50000, 2500, 0.2, 20, 0.4, 0.1, 0.3, 0.3, 23, 0.05, 0.34, 0.3, 0.6, 0.3, 0.39, 300, 900, 450, '量大急求！', 3);
+INSERT INTO `list` VALUES (1, '中天供应链公司', 11, 1, '中天供应链公司', '2021-08-05 09:58:41', '2021-08-14 09:31:11', '2021-08-14 09:31:11', '新型煤', 100, '海运', '江西', '现结', '现金', '现金', 1, 26700, 6600, 0.2, 10, 0.4, 0.1, 0.3, 0.3, 35, 0.05, 0.34, 0.3, 0.6, 0.3, 0.39, 300, 900, 450, '量大急求！', 3);
+INSERT INTO `list` VALUES (1, '舒雅工程公司', 13, 1, '舒雅工程公司', '2021-08-05 09:58:41', '2021-08-12 09:58:48', '2021-08-17 09:59:26', '动力煤', 100, '海运', '贵州', '现结', '现金', '现金', 1, 40000, 3400, 0.2, 3, 0.4, 0.1, 0.3, 0.3, 10, 0.05, 0.34, 0.3, 0.6, 0.3, 0.39, 300, 900, 450, '量大急求！', 2);
+INSERT INTO `list` VALUES (0, '舒雅工程公司', 14, 1, '舒雅工程公司', '2021-08-05 09:58:41', '2021-08-12 09:58:48', '2021-08-17 09:59:26', '水煤浆', 100, '海运', '贵州', '现结', '现金', '现金', 1, 50000, 3300, 0.2, 11, 0.4, 0.1, 0.3, 0.3, 10, 0.05, 0.34, 0.3, 0.6, 0.3, 0.39, 300, 900, 450, '量大急求！', 2);
+INSERT INTO `list` VALUES (0, '舒雅工程公司', 18, 1, '舒雅工程公司', '2021-08-05 09:58:41', '2021-08-12 09:58:48', '2021-08-17 09:59:26', '水煤浆', 100, '海运', '陕西', '现结', '现金', '现金', 1, 55000, 2000, 0.2, 14, 0.4, 0.1, 0.3, 0.3, 10, 0.05, 0.34, 0.3, 0.6, 0.3, 0.39, 300, 900, 450, '量大急求！', 2);
+INSERT INTO `list` VALUES (0, '舒雅工程公司', 21, 1, '舒雅工程公司', '2021-08-05 09:58:41', '2021-08-12 09:58:48', '2021-08-17 09:59:26', '动力煤', 100, '海运', '江西', '现结', '现金', '现金', 1, 35000, 4500, 0.2, 15, 0.4, 0.1, 0.3, 0.3, 40, 0.05, 0.34, 0.3, 0.6, 0.3, 0.39, 300, 900, 450, '量大急求！', 2);
+INSERT INTO `list` VALUES (1, '永盛化工公司', 23, 1, '永盛化工公司', '2021-08-05 09:58:41', '2021-08-12 09:58:48', '2021-08-17 09:59:26', '新型煤', 100, '海运', '江西', '现结', '现金', '现金', 1, 35000, 1200, 0.2, 15, 0.4, 0.1, 0.3, 0.3, 37, 0.05, 0.34, 0.3, 0.6, 0.3, 0.39, 300, 900, 450, '量大急求！', 2);
+INSERT INTO `list` VALUES (1, '永盛化工公司', 24, 1, '永盛化工公司', '2021-08-05 09:58:41', '2021-08-12 09:58:48', '2021-08-17 09:59:26', '新型煤', 100, '海运', '四川', '现结', '现金', '现金', 1, 35000, 2000, 0.2, 17, 0.4, 0.1, 0.3, 0.3, 16, 0.05, 0.34, 0.3, 0.6, 0.3, 0.39, 300, 900, 450, '量大急求！', 2);
+INSERT INTO `list` VALUES (0, '瑞美时工程公司', 34, 1, '瑞美时工程公司', '2021-08-05 09:58:41', '2021-08-12 09:58:48', '2021-08-17 09:59:26', '煤泥', 100, '海运', '四川', '现结', '现金', '现金', 1, 62100, 1700, 0.2, 20, 0.4, 0.1, 0.3, 0.3, 5, 0.05, 0.34, 0.3, 0.6, 0.3, 0.39, 300, 900, 450, '量大急求！', 2);
+INSERT INTO `list` VALUES (1, '瑞美时工程公司', 35, 1, '瑞美时工程公司', '2021-08-05 09:58:41', '2021-08-14 09:33:06', '2021-08-14 09:33:06', '水煤浆', 100, '海运', '海南', '现结', '现金', '现金', 1, 80000, 3100, 0.2, 30, 0.4, 0.1, 0.3, 0.3, 4, 0.05, 0.34, 0.3, 0.6, 0.3, 0.39, 300, 900, 450, '量大急求！', 3);
+INSERT INTO `list` VALUES (1, '永盛化工公司', 45, 1, '永盛化工公司', '2021-08-05 09:58:41', '2021-08-12 09:58:48', '2021-08-17 09:59:26', '新型煤', 100, '海运', '海南', '现结', '现金', '现金', 1, 80000, 3600, 0.2, 35, 0.4, 0.1, 0.3, 0.3, 3, 0.05, 0.34, 0.3, 0.6, 0.3, 0.39, 300, 900, 450, '量大急求！', 2);
+INSERT INTO `list` VALUES (1, '永盛化工公司', 56, 1, '永盛化工公司', '2021-08-05 09:58:41', '2021-08-12 09:58:48', '2021-08-17 09:59:26', '无烟煤', 100, '海运', '江西', '现结', '现金', '现金', 1, 50000, 3300, 0.2, 27, 0.4, 0.1, 0.3, 0.3, 11, 0.05, 0.34, 0.3, 0.6, 0.3, 0.39, 300, 900, 450, '量大急求！', 2);
+INSERT INTO `list` VALUES (0, '桂华供应链公司', 67, 1, '桂华供应链公司', '2021-08-05 09:58:41', '2021-08-12 09:58:48', '2021-08-17 09:59:26', '无烟煤', 100, '海运', '江西', '现结', '现金', '现金', 1, 44000, 2000, 0.2, 10, 0.4, 0.1, 0.3, 0.3, 10, 0.05, 0.34, 0.3, 0.6, 0.3, 0.39, 300, 900, 450, '量大急求！', 2);
+INSERT INTO `list` VALUES (1, '桂华供应链公司', 68, 1, '桂华供应链公司', '2021-08-05 09:58:41', '2021-08-12 09:58:48', '2021-08-17 09:59:26', '新型煤', 100, '海运', '安徽', '现结', '现金', '现金', 1, 50000, 4500, 0.2, 10, 0.4, 0.1, 0.3, 0.3, 4, 0.05, 0.34, 0.3, 0.6, 0.3, 0.39, 300, 900, 450, '量大急求！', 2);
+INSERT INTO `list` VALUES (1, '永盛化工公司', 69, 1, '永盛化工公司', '2021-08-05 09:58:41', '2021-08-12 09:58:48', '2021-08-17 09:59:26', '无烟煤', 100, '海运', '江西', '现结', '现金', '现金', 1, 50000, 1200, 0.2, 10, 0.4, 0.1, 0.3, 0.3, 3, 0.05, 0.34, 0.3, 0.6, 0.3, 0.39, 300, 900, 450, '量大急求！', 2);
+INSERT INTO `list` VALUES (1, '永盛化工公司', 87, 1, '永盛化工公司', '2021-08-05 09:58:41', '2021-08-12 09:58:48', '2021-08-17 09:59:26', '炼焦媒', 100, '海运', '内蒙古自治区', '现结', '现金', '现金', 1, 50000, 2000, 0.2, 10, 0.4, 0.1, 0.3, 0.3, 11, 0.05, 0.34, 0.3, 0.6, 0.3, 0.39, 300, 900, 450, '量大急求！', 2);
+INSERT INTO `list` VALUES (0, '中天供应链公司', 89, 1, '中天供应链公司', '2021-08-05 09:58:41', '2021-08-12 09:58:48', '2021-08-17 09:59:26', '炼焦媒', 100, '海运', '内蒙古自治区', '现结', '现金', '现金', 1, 50000, 1700, 0.2, 16, 0.4, 0.1, 0.3, 0.3, 5, 0.05, 0.34, 0.3, 0.6, 0.3, 0.39, 300, 900, 450, '量大急求！', 2);
+INSERT INTO `list` VALUES (1, '天昊化工公司', 90, 1, '天昊化工公司', '2021-08-05 09:58:41', '2021-08-12 09:58:48', '2021-08-17 09:59:26', '煤泥', 100, '海运', '内蒙古自治区', '现结', '现金', '现金', 1, 66000, 8000, 0.2, 16, 0.4, 0.1, 0.3, 0.3, 14, 0.05, 0.34, 0.3, 0.6, 0.3, 0.39, 300, 900, 450, '量大急求！', 2);
+INSERT INTO `list` VALUES (1, '天昊化工公司', 91, 1, '天昊化工公司', '2021-08-05 09:58:41', '2021-08-12 09:58:48', '2021-08-17 09:59:26', '新型煤', 100, '海运', '江西', '现结', '现金', '现金', 1, 66000, 7000, 0.2, 16, 0.4, 0.1, 0.3, 0.3, 4, 0.05, 0.34, 0.3, 0.6, 0.3, 0.39, 300, 900, 450, '量大急求！', 2);
+INSERT INTO `list` VALUES (0, '天昊化工公司', 92, 1, '天昊化工公司', '2021-08-05 09:58:41', '2021-08-12 09:58:48', '2021-08-17 09:59:26', '低质煤', 100, '海运', '江西', '现结', '现金', '现金', 1, 50000, 4400, 0.2, 9, 0.4, 0.1, 0.3, 0.3, 3, 0.05, 0.34, 0.3, 0.6, 0.3, 0.39, 300, 900, 450, '量大急求！', 2);
+INSERT INTO `list` VALUES (1, '永盛化工公司', 100, 1, '永盛化工公司', '2021-08-05 09:58:41', '2021-08-12 09:58:48', '2021-08-17 09:59:26', '新型煤', 100, '海运', '广东', '现结', '现金', '现金', 1, 50000, 1500, 0.2, 5, 0.4, 0.1, 0.3, 0.3, 30, 0.05, 0.34, 0.3, 0.6, 0.3, 0.39, 300, 900, 450, '量大急求！', 2);
+INSERT INTO `list` VALUES (1, '永盛化工公司', 112, 1, '永盛化工公司', '2021-08-05 09:58:41', '2021-08-12 09:58:48', '2021-08-17 09:59:26', '新型煤', 100, '海运', '贵州', '现结', '现金', '现金', 1, 26700, 3500, 0.2, 4, 0.4, 0.1, 0.3, 0.3, 27, 0.05, 0.34, 0.3, 0.6, 0.3, 0.39, 300, 900, 450, '量大急求！', 2);
+INSERT INTO `list` VALUES (1, '欧利供应链公司', 117, 1, '欧利供应链公司', '2021-08-05 09:58:41', '2021-08-12 09:58:48', '2021-08-17 09:59:26', '水煤浆', 100, '海运', '贵州', '现结', '现金', '现金', 1, 40000, 6600, 0.2, 10, 0.4, 0.1, 0.3, 0.3, 35, 0.05, 0.34, 0.3, 0.6, 0.3, 0.39, 300, 900, 450, '量大急求！', 2);
+INSERT INTO `list` VALUES (1, '永盛化工公司', 137, 1, '永盛化工公司', '2021-08-05 09:58:41', '2021-08-12 09:58:48', '2021-08-17 09:59:26', '水煤浆', 100, '海运', '贵州', '现结', '现金', '现金', 1, 50000, 3400, 0.2, 3, 0.4, 0.1, 0.3, 0.3, 10, 0.05, 0.34, 0.3, 0.6, 0.3, 0.39, 300, 900, 450, '量大急求！', 2);
+INSERT INTO `list` VALUES (1, '瑞美时工程公司', 342, 1, '瑞美时工程公司', '2021-08-05 09:58:41', '2021-08-12 09:58:48', '2021-08-17 09:59:26', '新型煤', 100, '海运', '江西', '现结', '现金', '现金', 1, 50000, 2700, 0.2, 23, 0.4, 0.1, 0.3, 0.3, 10, 0.05, 0.34, 0.3, 0.6, 0.3, 0.39, 300, 900, 450, '量大急求！', 2);
+INSERT INTO `list` VALUES (1, '房贷首付', 434, NULL, '爱的色放', '2021-08-14 09:20:04', '2021-08-14 09:20:04', '2021-08-14 09:20:04', '新型煤', 10000, '铁路运输', '阿道夫', '单次', '线上', '现金结算', 0, 100, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 5, 0, 10, 10, 10, 10, 10, '', 2);
+INSERT INTO `list` VALUES (0, '这是555的订单', 435, 666, '我很厉害的', '2021-08-14 10:16:23', '2021-08-14 10:20:18', '2021-08-14 10:20:18', '新型煤', 10000, '铁路运输', '当然是四川', '单次', '线上', '现金结算', 0, 100, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 5, 0, 10, 10, 10, 10, 10, '仅仅是一个测试，别紧张', 3);
+INSERT INTO `list` VALUES (1, '合盛元化工公司', 568, 1, '合盛元化工公司', '2021-08-05 09:58:41', '2021-08-12 09:58:48', '2021-08-17 09:59:26', '无烟煤', 100, '海运', '江西', '现结', '现金', '现金', 1, 44000, 3300, 0.2, 27, 0.4, 0.1, 0.3, 0.3, 11, 0.05, 0.34, 0.3, 0.6, 0.3, 0.39, 300, 900, 450, '量大急求！', 2);
+INSERT INTO `list` VALUES (1, '永盛化工公司', 687, 1, '永盛化工公司', '2021-08-05 09:58:41', '2021-08-12 09:58:48', '2021-08-17 09:59:26', '炼焦媒', 100, '海运', '江西', '现结', '现金', '现金', 1, 50000, 4500, 0.2, 10, 0.4, 0.1, 0.3, 0.3, 4, 0.05, 0.34, 0.3, 0.6, 0.3, 0.39, 300, 900, 450, '量大急求！', 2);
+INSERT INTO `list` VALUES (1, '永盛化工公司', 973, 1, '永盛化工公司', '2021-08-05 09:58:41', '2021-08-12 09:58:48', '2021-08-17 09:59:26', '新型煤', 100, '海运', '江西', '现结', '现金', '现金', 1, 38000, 3900, 0.2, 9, 0.4, 0.1, 0.3, 0.3, 11, 0.05, 0.34, 0.3, 0.6, 0.3, 0.39, 300, 900, 450, '量大急求！', 2);
+INSERT INTO `list` VALUES (1, '欧利供应链公司', 1007, 1, '欧利供应链公司', '2021-08-05 09:58:41', '2021-08-12 09:58:48', '2021-08-17 09:59:26', '新型煤', 100, '海运', '江西', '现结', '现金', '现金', 1, 40000, 1500, 0.2, 5, 0.4, 0.1, 0.3, 0.3, 30, 0.05, 0.34, 0.3, 0.6, 0.3, 0.39, 300, 900, 450, '量大急求！', 2);
+INSERT INTO `list` VALUES (1, '永盛化工公司', 1127, 1, '永盛化工公司', '2021-08-05 09:58:41', '2021-08-12 09:58:48', '2021-08-17 09:59:26', '新型煤', 100, '海运', '贵州', '现结', '现金', '现金', 1, 40000, 3500, 0.2, 4, 0.4, 0.1, 0.3, 0.3, 27, 0.05, 0.34, 0.3, 0.6, 0.3, 0.39, 300, 900, 450, '量大急求！', 2);
+INSERT INTO `list` VALUES (0, '永盛化工公司', 1477, 1, '永盛化工公司', '2021-08-05 09:58:41', '2021-08-12 09:58:48', '2021-08-17 09:59:26', '水煤浆', 100, '海运', '江西', '现结', '现金', '现金', 1, 55000, 3300, 0.2, 11, 0.4, 0.1, 0.3, 0.3, 10, 0.05, 0.34, 0.3, 0.6, 0.3, 0.39, 300, 900, 450, '量大急求！', 2);
+INSERT INTO `list` VALUES (0, '合盛元化工公司', 1867, 1, '合盛元化工公司', '2021-08-05 09:58:41', '2021-08-12 09:58:48', '2021-08-17 09:59:26', '新型煤', 100, '海运', '陕西', '现结', '现金', '现金', 1, 50000, 2000, 0.2, 14, 0.4, 0.1, 0.3, 0.3, 10, 0.05, 0.34, 0.3, 0.6, 0.3, 0.39, 300, 900, 450, '量大急求！', 2);
+INSERT INTO `list` VALUES (0, '合盛元化工公司', 2176, 1, '合盛元化工公司', '2021-08-05 09:58:41', '2021-08-12 09:58:48', '2021-08-17 09:59:26', '动力煤', 100, '海运', '江西', '现结', '现金', '现金', 1, 35000, 4500, 0.2, 15, 0.4, 0.1, 0.3, 0.3, 40, 0.05, 0.34, 0.3, 0.6, 0.3, 0.39, 300, 900, 450, '量大急求！', 2);
+INSERT INTO `list` VALUES (1, '合盛元化工公司', 2356, 1, '合盛元化工公司', '2021-08-05 09:58:41', '2021-08-12 09:58:48', '2021-08-17 09:59:26', '新型煤', 100, '海运', '四川', '现结', '现金', '现金', 1, 35000, 1200, 0.2, 15, 0.4, 0.1, 0.3, 0.3, 37, 0.05, 0.34, 0.3, 0.6, 0.3, 0.39, 300, 900, 450, '量大急求！', 2);
+INSERT INTO `list` VALUES (1, '鸿铭工程公司', 2456, 1, '鸿铭工程公司', '2021-08-05 09:58:41', '2021-08-12 09:58:48', '2021-08-17 09:59:26', '煤泥', 100, '海运', '四川', '现结', '现金', '现金', 1, 62100, 2000, 0.2, 17, 0.4, 0.1, 0.3, 0.3, 16, 0.05, 0.34, 0.3, 0.6, 0.3, 0.39, 300, 900, 450, '量大急求！', 2);
+INSERT INTO `list` VALUES (0, '鸿铭工程公司', 3446, 1, '鸿铭工程公司', '2021-08-05 09:58:41', '2021-08-12 09:58:48', '2021-08-17 09:59:26', '水煤浆', 100, '海运', '江西', '现结', '现金', '现金', 1, 50000, 1700, 0.2, 20, 0.4, 0.1, 0.3, 0.3, 5, 0.05, 0.34, 0.3, 0.6, 0.3, 0.39, 300, 900, 450, '量大急求！', 2);
+INSERT INTO `list` VALUES (1, '合盛元化工公司', 3579, 1, '合盛元化工公司', '2021-08-05 09:58:41', '2021-08-12 09:58:48', '2021-08-17 09:59:26', '新型煤', 100, '海运', '海南', '现结', '现金', '现金', 1, 80000, 3100, 0.2, 30, 0.4, 0.1, 0.3, 0.3, 4, 0.05, 0.34, 0.3, 0.6, 0.3, 0.39, 300, 900, 450, '量大急求！', 2);
+INSERT INTO `list` VALUES (1, '合盛元化工公司', 4589, 1, '合盛元化工公司', '2021-08-05 09:58:41', '2021-08-12 09:58:48', '2021-08-17 09:59:26', '无烟煤', 100, '海运', '江西', '现结', '现金', '现金', 1, 50000, 3600, 0.2, 35, 0.4, 0.1, 0.3, 0.3, 3, 0.05, 0.34, 0.3, 0.6, 0.3, 0.39, 300, 900, 450, '量大急求！', 2);
+INSERT INTO `list` VALUES (0, '合盛元化工公司', 6778, 1, '合盛元化工公司', '2021-08-05 09:58:41', '2021-08-12 09:58:48', '2021-08-17 09:59:26', '新型煤', 100, '海运', '安徽', '现结', '现金', '现金', 1, 50000, 2000, 0.2, 10, 0.4, 0.1, 0.3, 0.3, 10, 0.05, 0.34, 0.3, 0.6, 0.3, 0.39, 300, 900, 450, '量大急求！', 2);
+INSERT INTO `list` VALUES (1, '永盛化工公司', 6945, 1, '永盛化工公司', '2021-08-05 09:58:41', '2021-08-12 09:58:48', '2021-08-17 09:59:26', '无烟煤', 100, '海运', '江西', '现结', '现金', '现金', 1, 50000, 1200, 0.2, 10, 0.4, 0.1, 0.3, 0.3, 3, 0.05, 0.34, 0.3, 0.6, 0.3, 0.39, 300, 900, 450, '量大急求！', 2);
+INSERT INTO `list` VALUES (1, '永盛化工公司', 8745, 1, '永盛化工公司', '2021-08-05 09:58:41', '2021-08-12 09:58:48', '2021-08-17 09:59:26', '炼焦媒', 100, '海运', '内蒙古自治区', '现结', '现金', '现金', 1, 50000, 2000, 0.2, 10, 0.4, 0.1, 0.3, 0.3, 11, 0.05, 0.34, 0.3, 0.6, 0.3, 0.39, 300, 900, 450, '量大急求！', 2);
+INSERT INTO `list` VALUES (0, '贝世工程公司', 8945, 1, '贝世工程公司', '2021-08-05 09:58:41', '2021-08-12 09:58:48', '2021-08-17 09:59:26', '炼焦媒', 100, '海运', '内蒙古自治区', '现结', '现金', '现金', 1, 66000, 1700, 0.2, 16, 0.4, 0.1, 0.3, 0.3, 5, 0.05, 0.34, 0.3, 0.6, 0.3, 0.39, 300, 900, 450, '量大急求！', 2);
+INSERT INTO `list` VALUES (1, '贝世工程公司', 9045, 1, '贝世工程公司', '2021-08-05 09:58:41', '2021-08-12 09:58:48', '2021-08-17 09:59:26', '炼焦媒', 100, '海运', '内蒙古自治区', '现结', '现金', '现金', 1, 66000, 8000, 0.2, 16, 0.4, 0.1, 0.3, 0.3, 14, 0.05, 0.34, 0.3, 0.6, 0.3, 0.39, 300, 900, 450, '量大急求！', 2);
+INSERT INTO `list` VALUES (1, '贝世工程公司', 9145, 1, '贝世工程公司', '2021-08-05 09:58:41', '2021-08-12 09:58:48', '2021-08-17 09:59:26', '新型煤', 100, '海运', '江西', '现结', '现金', '现金', 1, 66000, 7000, 0.2, 16, 0.4, 0.1, 0.3, 0.3, 4, 0.05, 0.34, 0.3, 0.6, 0.3, 0.39, 300, 900, 450, '量大急求！', 2);
+INSERT INTO `list` VALUES (0, '永盛化工公司', 9234, 1, '永盛化工公司', '2021-08-05 09:58:41', '2021-08-12 09:58:48', '2021-08-17 09:59:26', '低质煤', 100, '海运', '长春', '现结', '现金', '现金', 1, 50000, 4400, 0.2, 9, 0.4, 0.1, 0.3, 0.3, 3, 0.05, 0.34, 0.3, 0.6, 0.3, 0.39, 300, 900, 450, '量大急求！', 2);
+INSERT INTO `list` VALUES (0, '坤鑫供应链公司', 9711, 1, '坤鑫供应链公司', '2021-08-05 09:58:41', '2021-08-12 09:58:48', '2021-08-17 09:59:26', '动力煤', 100, '海运', '长春', '现结', '现金', '现金', 1, 38000, 2500, 0.2, 20, 0.4, 0.1, 0.3, 0.3, 23, 0.05, 0.34, 0.3, 0.6, 0.3, 0.39, 300, 900, 450, '量大急求！', 2);
+INSERT INTO `list` VALUES (1, '欧利供应链公司', 9712, 1, '欧利供应链公司', '2021-08-05 09:58:41', '2021-08-12 09:58:48', '2021-08-17 09:59:26', '新型煤', 100, '海运', '长春', '现结', '现金', '现金', 1, 38000, 3900, 0.2, 9, 0.4, 0.1, 0.3, 0.3, 11, 0.05, 0.34, 0.3, 0.6, 0.3, 0.39, 300, 900, 450, '量大急求！', 2);
+INSERT INTO `list` VALUES (1, '鸿铭工程公司', 34276, 1, '鸿铭工程公司', '2021-08-05 09:58:41', '2021-08-12 09:58:48', '2021-08-17 09:59:26', '水煤浆', 100, '海运', '江西', '现结', '现金', '现金', 1, 50000, 2700, 0.2, 23, 0.4, 0.1, 0.3, 0.3, 10, 0.05, 0.34, 0.3, 0.6, 0.3, 0.39, 300, 900, 450, '量大急求！', 2);
+INSERT INTO `list` VALUES (0, 'string', 4534340, 0, 'string', '2021-08-14 08:34:59', '2021-08-14 08:34:59', '2021-08-14 08:34:59', 'string', 0, 'string', 'string', 'string', 'string', 'string', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'string', 2);
 
 -- ----------------------------
 -- Table structure for menu
 -- ----------------------------
 DROP TABLE IF EXISTS `menu`;
 CREATE TABLE `menu`  (
-                         `id` int(11) NOT NULL AUTO_INCREMENT,
-                         `url` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-                         `path` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-                         `component` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-                         `name` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-                         `iconCls` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-                         `keepAlive` tinyint(1) NULL DEFAULT NULL,
-                         `requireAuth` tinyint(1) NULL DEFAULT NULL,
-                         `parentId` int(11) NULL DEFAULT NULL,
-                         `enabled` tinyint(1) NULL DEFAULT 1,
-                         PRIMARY KEY (`id`) USING BTREE,
-                         INDEX `parentId`(`parentId`) USING BTREE,
-                         CONSTRAINT `menu_ibfk_1` FOREIGN KEY (`parentId`) REFERENCES `menu` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 29 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `url` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `path` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `component` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `name` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `iconCls` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `keepAlive` tinyint(1) NULL DEFAULT NULL,
+  `requireAuth` tinyint(1) NULL DEFAULT NULL,
+  `parentId` int(11) NULL DEFAULT NULL,
+  `enabled` tinyint(1) NULL DEFAULT 1,
+  PRIMARY KEY (`id`) USING BTREE,
+  INDEX `parentId`(`parentId`) USING BTREE,
+  CONSTRAINT `menu_ibfk_1` FOREIGN KEY (`parentId`) REFERENCES `menu` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
+) ENGINE = InnoDB AUTO_INCREMENT = 30 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of menu
 -- ----------------------------
 INSERT INTO `menu` VALUES (1, '/', NULL, NULL, '所有', NULL, NULL, NULL, NULL, 1);
-INSERT INTO `menu` VALUES (2, '/', '/home', 'Home', '权限管理', 'el-icon-view', NULL, 1, 1, 1);
+INSERT INTO `menu` VALUES (2, '/', '/home', 'Home', '权限管理', 'el-icon-view', NULL, 1, NULL, 1);
 INSERT INTO `menu` VALUES (7, '/user/basic/**', '/user/basic', 'UserBasic', '用户资料', NULL, NULL, 1, 2, 1);
 INSERT INTO `menu` VALUES (8, '/user/rolemenu/**', '/user/rolemenu', 'UserRM', '菜单管理', NULL, NULL, 1, 2, 1);
 INSERT INTO `menu` VALUES (29, '/user/userrole/**', '/user/userrole/', 'UserUR', '角色分配', NULL, NULL, 1, 2, 1);
@@ -807,21 +813,21 @@ INSERT INTO `menu` VALUES (29, '/user/userrole/**', '/user/userrole/', 'UserUR',
 -- ----------------------------
 DROP TABLE IF EXISTS `menu_role`;
 CREATE TABLE `menu_role`  (
-                              `id` int(11) NOT NULL AUTO_INCREMENT,
-                              `mid` int(11) NULL DEFAULT NULL,
-                              `rid` int(11) NULL DEFAULT NULL,
-                              PRIMARY KEY (`id`) USING BTREE,
-                              INDEX `mid`(`mid`) USING BTREE,
-                              INDEX `rid`(`rid`) USING BTREE,
-                              CONSTRAINT `menu_role_ibfk_1` FOREIGN KEY (`mid`) REFERENCES `menu` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
-                              CONSTRAINT `menu_role_ibfk_2` FOREIGN KEY (`rid`) REFERENCES `role` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 283 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `mid` int(11) NULL DEFAULT NULL,
+  `rid` int(11) NULL DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE,
+  INDEX `mid`(`mid`) USING BTREE,
+  INDEX `rid`(`rid`) USING BTREE,
+  CONSTRAINT `menu_role_ibfk_1` FOREIGN KEY (`mid`) REFERENCES `menu` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
+  CONSTRAINT `menu_role_ibfk_2` FOREIGN KEY (`rid`) REFERENCES `role` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
+) ENGINE = InnoDB AUTO_INCREMENT = 283 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of menu_role
 -- ----------------------------
 INSERT INTO `menu_role` VALUES (161, 7, 1);
-INSERT INTO `menu_role` VALUES (162, 2, 2);
+INSERT INTO `menu_role` VALUES (162, 2, 1);
 INSERT INTO `menu_role` VALUES (164, 8, 1);
 INSERT INTO `menu_role` VALUES (165, 29, 1);
 
@@ -830,11 +836,11 @@ INSERT INTO `menu_role` VALUES (165, 29, 1);
 -- ----------------------------
 DROP TABLE IF EXISTS `role`;
 CREATE TABLE `role`  (
-                         `id` int(11) NOT NULL AUTO_INCREMENT,
-                         `name` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-                         `nameZh` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '' COMMENT '角色名称',
-                         PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 22 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `nameZh` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '' COMMENT '角色名称',
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 22 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of role
@@ -847,37 +853,48 @@ INSERT INTO `role` VALUES (2, 'ROLE_user', '普通用户');
 -- ----------------------------
 DROP TABLE IF EXISTS `t_order`;
 CREATE TABLE `t_order`  (
-                            `no` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-                            `startTime` datetime NOT NULL,
-                            `endTime` datetime NOT NULL,
-                            `buyerId` int(11) NOT NULL,
-                            `sellerId` int(11) NULL DEFAULT NULL,
-                            `listId` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-                            PRIMARY KEY (`no`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+  `no` int(11) NOT NULL AUTO_INCREMENT,
+  `startTime` datetime NOT NULL,
+  `endTime` datetime NOT NULL,
+  `buyerId` int(11) NOT NULL,
+  `sellerId` int(11) NULL DEFAULT NULL,
+  `listId` int(11) NOT NULL,
+  PRIMARY KEY (`no`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 11 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of t_order
 -- ----------------------------
+INSERT INTO `t_order` VALUES (1, '2021-07-28 18:03:18', '2021-08-17 18:03:21', 1, 2, 1);
+INSERT INTO `t_order` VALUES (2, '2021-07-28 18:03:18', '2021-08-17 18:03:21', 1, 2, 100);
+INSERT INTO `t_order` VALUES (3, '2021-07-28 18:03:18', '2021-08-17 18:03:21', 1, 2, 11);
+INSERT INTO `t_order` VALUES (4, '2021-08-14 08:50:08', '2021-08-14 08:50:08', 1, 1, 1);
+INSERT INTO `t_order` VALUES (5, '2021-08-14 09:31:11', '2021-08-14 09:31:11', 1, 1, 11);
+INSERT INTO `t_order` VALUES (6, '2021-08-14 09:33:03', '2021-08-14 09:33:03', 1, 1, 35);
+INSERT INTO `t_order` VALUES (7, '2021-08-14 09:33:04', '2021-08-14 09:33:04', 1, 1, 35);
+INSERT INTO `t_order` VALUES (8, '2021-08-14 09:33:05', '2021-08-14 09:33:05', 1, 1, 35);
+INSERT INTO `t_order` VALUES (9, '2021-08-14 09:33:06', '2021-08-14 09:33:06', 1, 1, 35);
+INSERT INTO `t_order` VALUES (10, '2021-08-14 10:20:18', '2021-08-14 10:20:18', 666, 666, 435);
+INSERT INTO `t_order` VALUES (11, '2021-08-15 17:36:08', '2021-08-15 17:36:08', 1, 1, 1);
 
 -- ----------------------------
 -- Table structure for user
 -- ----------------------------
 DROP TABLE IF EXISTS `user`;
 CREATE TABLE `user`  (
-                         `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'hrID',
-                         `name` varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '姓名',
-                         `phone` char(11) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '手机号码',
-                         `address` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '联系地址',
-                         `enabled` tinyint(1) NULL DEFAULT 1,
-                         `username` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '用户名',
-                         `password` varchar(200) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '密码',
-                         `email` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '邮箱',
-                         `birthday` date NULL DEFAULT NULL COMMENT '生日',
-                         `gender` varchar(10) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '性别',
-                         `cpnName` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '',
-                         PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 17 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'hrID',
+  `name` varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '姓名',
+  `phone` char(11) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '手机号码',
+  `address` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '联系地址',
+  `enabled` tinyint(1) NULL DEFAULT 1,
+  `username` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '用户名',
+  `password` varchar(200) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '密码',
+  `email` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '邮箱',
+  `birthday` date NULL DEFAULT NULL COMMENT '生日',
+  `gender` varchar(10) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '性别',
+  `cpnName` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '',
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 25 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of user
@@ -887,22 +904,28 @@ INSERT INTO `user` VALUES (5, '李白', '18568123489', '海口美兰', 1, 'libai
 INSERT INTO `user` VALUES (10, '韩愈', '18568123666', '广州番禺', 1, 'hanyu', '$2a$10$oE39aG10kB/rFu2vQeCJTu/V/v4n6DRR0f8WyXRiAYvBpmadoOBE.', 'zhao@qq.com', '1993-03-04', '男', NULL);
 INSERT INTO `user` VALUES (11, '柳宗元', '18568123377', '广州天河', 1, 'liuzongyuan', '$2a$10$oE39aG10kB/rFu2vQeCJTu/V/v4n6DRR0f8WyXRiAYvBpmadoOBE.', 'yaosen@qq.com', '1990-01-03', '男', NULL);
 INSERT INTO `user` VALUES (12, '曾巩', '18568128888', '广州越秀', 1, 'zenggong', '$2a$10$oE39aG10kB/rFu2vQeCJTu/V/v4n6DRR0f8WyXRiAYvBpmadoOBE.', 'yunxing@qq.com', '1991-02-05', '男', NULL);
-INSERT INTO `user` VALUES (17, '原神', '87894231564', '发生的', 0, NULL, NULL, 'dsadw@qq.com', '2021-08-11', '女', '草泥马');
+INSERT INTO `user` VALUES (18, 'string', 'string', 'string', 1, '1', '$2a$10$mikc7xigEHlW0iAzvHYg7eMVH4vLBRcniD3RNFFLcXUDPZvHUXvWC', 'string', '2021-08-12', 'string', 'string');
+INSERT INTO `user` VALUES (19, '123', 'string', 'string', 1, 'string', '$2a$10$.h/Yh8EDguoyOVqmX.kCC.hi1b8WMdzlxpiNBhz.ErC5NNmattsBm', 'string', '2021-08-12', 'string', 'string');
+INSERT INTO `user` VALUES (20, '123', 'string', 'string', 1, '111', '$2a$10$5mMDEyoawm7FUZMFXf5Lgu/vgzt9/ie.QLcxkjeglEeEN35yE/Xoy', 'string', '2021-08-12', 'string', 'string');
+INSERT INTO `user` VALUES (21, NULL, NULL, '9', 1, '999', '$2a$10$XjYmncGInRdRslsqvlF5BejjmtGRStyCyFjOl1IN.E7xoCw9o1BU6', '9', '2021-08-15', '男', '');
+INSERT INTO `user` VALUES (22, NULL, NULL, '88', 1, '888', '$2a$10$V6527DHpl0w.ae6/uy6jTupJx51sxsWFxN2AoKTS2rVW4s6kAdV4W', '888', '2021-08-16', '男', '');
+INSERT INTO `user` VALUES (23, 'zhou', '182', '四川成都', 1, '666', '$2a$10$L.Lj21MrtjlEIk7r0.FQmeLKbF.BdveipJpVdtcJxfaUaHGgCiFWy', '169', '2021-06-07', '男', '电子科技大学');
+INSERT INTO `user` VALUES (24, '国服韩信', '18284597212', '1312', 1, '555', '$2a$10$qChgZeHwAeU/3UCbE.Va7OVo0LYqbxvRbIhCC3X8XoJ8I4U9f/WES', '12938712321', '2021-08-09', '男', '电子科技大学');
 
 -- ----------------------------
 -- Table structure for user_role
 -- ----------------------------
 DROP TABLE IF EXISTS `user_role`;
 CREATE TABLE `user_role`  (
-                              `id` int(11) NOT NULL AUTO_INCREMENT,
-                              `uid` int(11) NULL DEFAULT NULL,
-                              `rid` int(11) NULL DEFAULT NULL,
-                              PRIMARY KEY (`id`) USING BTREE,
-                              INDEX `rid`(`rid`) USING BTREE,
-                              INDEX `hr_role_ibfk_1`(`uid`) USING BTREE,
-                              CONSTRAINT `user_role_ibfk_1` FOREIGN KEY (`uid`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE RESTRICT,
-                              CONSTRAINT `user_role_ibfk_2` FOREIGN KEY (`rid`) REFERENCES `role` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 79 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `uid` int(11) NULL DEFAULT NULL,
+  `rid` int(11) NULL DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE,
+  INDEX `rid`(`rid`) USING BTREE,
+  INDEX `hr_role_ibfk_1`(`uid`) USING BTREE,
+  CONSTRAINT `user_role_ibfk_1` FOREIGN KEY (`uid`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE RESTRICT,
+  CONSTRAINT `user_role_ibfk_2` FOREIGN KEY (`rid`) REFERENCES `role` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
+) ENGINE = InnoDB AUTO_INCREMENT = 89 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of user_role
@@ -912,7 +935,13 @@ INSERT INTO `user_role` VALUES (2, 5, 2);
 INSERT INTO `user_role` VALUES (75, 10, 2);
 INSERT INTO `user_role` VALUES (76, 11, 2);
 INSERT INTO `user_role` VALUES (77, 12, 2);
-INSERT INTO `user_role` VALUES (81, 17, 1);
+INSERT INTO `user_role` VALUES (82, 18, 2);
+INSERT INTO `user_role` VALUES (83, 19, 2);
+INSERT INTO `user_role` VALUES (84, 20, 2);
+INSERT INTO `user_role` VALUES (85, 21, 2);
+INSERT INTO `user_role` VALUES (86, 22, 2);
+INSERT INTO `user_role` VALUES (87, 23, 2);
+INSERT INTO `user_role` VALUES (88, 24, 2);
 
 -- ----------------------------
 -- Procedure structure for addDep
@@ -921,15 +950,15 @@ DROP PROCEDURE IF EXISTS `addDep`;
 delimiter ;;
 CREATE PROCEDURE `addDep`(in depName varchar(32),in parentId int,in enabled boolean,out result int,out result2 int)
 begin
-    declare did int;
-    declare pDepPath varchar(64);
-    insert into department set name=depName,parentId=parentId,enabled=enabled;
-    select row_count() into result;
-    select last_insert_id() into did;
-    set result2=did;
-    select depPath into pDepPath from department where id=parentId;
-    update department set depPath=concat(pDepPath,'.',did) where id=did;
-    update department set isParent=true where id=parentId;
+  declare did int;
+  declare pDepPath varchar(64);
+  insert into department set name=depName,parentId=parentId,enabled=enabled;
+  select row_count() into result;
+  select last_insert_id() into did;
+  set result2=did;
+  select depPath into pDepPath from department where id=parentId;
+  update department set depPath=concat(pDepPath,'.',did) where id=did;
+  update department set isParent=true where id=parentId;
 end
 ;;
 delimiter ;
@@ -941,24 +970,24 @@ DROP PROCEDURE IF EXISTS `deleteDep`;
 delimiter ;;
 CREATE PROCEDURE `deleteDep`(in did int,out result int)
 begin
-    declare ecount int;
-    declare pid int;
-    declare pcount int;
-    declare a int;
-    select count(*) into a from department where id=did and isParent=false;
-    if a=0 then set result=-2;
-    else
-        select count(*) into ecount from employee where departmentId=did;
-        if ecount>0 then set result=-1;
-        else
-            select parentId into pid from department where id=did;
-            delete from department where id=did and isParent=false;
-            select row_count() into result;
-            select count(*) into pcount from department where parentId=pid;
-            if pcount=0 then update department set isParent=false where id=pid;
-            end if;
-        end if;
-    end if;
+  declare ecount int;
+  declare pid int;
+  declare pcount int;
+  declare a int;
+  select count(*) into a from department where id=did and isParent=false;
+  if a=0 then set result=-2;
+  else
+  select count(*) into ecount from employee where departmentId=did;
+  if ecount>0 then set result=-1;
+  else
+  select parentId into pid from department where id=did;
+  delete from department where id=did and isParent=false;
+  select row_count() into result;
+  select count(*) into pcount from department where parentId=pid;
+  if pcount=0 then update department set isParent=false where id=pid;
+  end if;
+  end if;
+  end if;
 end
 ;;
 delimiter ;
