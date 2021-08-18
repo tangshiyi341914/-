@@ -1,0 +1,35 @@
+<template>
+  <div>
+    <Header/>
+    <div style="display: flex">
+      <div style="width: 10%"/>
+      <Usersheader/>
+
+
+<!--      内容区域-->
+
+      <div style="flex: 1">
+
+      </div>
+
+
+
+
+      <div style="width: 10%"/>
+
+    </div>
+  </div>
+</template>
+
+<script>
+import Usersheader from "../index/UsersHeader";
+import Header from "../../components/Header";
+export default {
+  name: "profile",
+  components: {Usersheader,Header}
+}
+</script>
+
+<style scoped>
+
+</style>

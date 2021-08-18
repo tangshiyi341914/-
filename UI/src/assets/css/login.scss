@@ -1,0 +1,66 @@
+.grad {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background-color: wheat;
+  background: linear-gradient(
+    135deg,
+    hsl(170deg, 80%, 70%),
+    hsl(190deg, 80%, 70%),
+    hsl(250deg, 80%, 70%),
+    hsl(320deg, 80%, 70%)
+  );
+  background-size: 200% 200%;
+  animation: mymove 5s linear infinite alternate;
+}
+@keyframes mymove {
+  0% {
+    background-position: 0 0;
+  }
+  14% {
+    background-position: 10% 10%;
+  }
+  28% {
+    background-position: 25% 25%;
+  }
+  42% {
+    background-position: 40% 40%;
+  }
+  56% {
+    background-position: 55% 55%;
+  }
+  70% {
+    background-position: 70% 70%;
+  }
+  84% {
+    background-position: 85% 85%;
+  }
+  100% {
+    background-position: 100% 100%;
+  }
+}
+.form {
+  padding: 20px 30px;
+  border-radius: 5%;
+  background: rgba(255, 255, 255, 0.048);
+  height: 50%;
+  width: 20%;
+  margin: 10% auto;
+  img {
+    height: 35px;
+    margin-top: 4px;
+    margin-left: 6px;
+  }
+  .el-input {
+    height: 38px;
+    input {
+      height: 38px;
+    }
+  }
+}
+
+.title {
+  margin: 0px auto 30px auto;
+  text-align: center;
+  color: #666565;
+}
