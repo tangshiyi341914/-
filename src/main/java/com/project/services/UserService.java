@@ -106,4 +106,12 @@ public class UserService implements UserDetailsService {
         user.setPassword(newPwd);
         return userMapper.insert(user);
     }
+
+    public int addUsers(List<User> users) {
+        int count=0;
+        for (int i = 0; i < users.size(); i++) {
+            count+=userMapper.insert(users.get(i));
+        }
+        return count;
+    }
 }

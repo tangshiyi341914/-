@@ -2,8 +2,8 @@ spring:
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
     username: root
-    password: zfx666
-    url: jdbc:mysql://localhost:3306/project?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
+    password: root
+    url: jdbc:mysql://47.101.43.9:3306/project?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
 rabbitmq:
   username: admin
   password: admin
@@ -11,7 +11,7 @@ rabbitmq:
   host: 47.101.43.9
   port: 5672
 server:
-  port: 8601
+  port: 8081
   compression:
     enabled: true
 mybatis-plus:
